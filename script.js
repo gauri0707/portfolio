@@ -72,6 +72,7 @@
 
     function showProof(key) {
       proofStage.classList.add('active');
+      proofStage.classList.toggle('wide', key === 'tableau');
       proofPanels.forEach(function (p) {
         p.classList.toggle('visible', p.getAttribute('data-panel') === key);
       });
@@ -83,6 +84,7 @@
     }
     function hideProof() {
       proofStage.classList.remove('active');
+      proofStage.classList.remove('wide');
       proofTriggers.forEach(function (t) { t.classList.remove('active'); });
       activeProof = null;
     }
