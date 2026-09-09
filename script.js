@@ -58,11 +58,13 @@
         '<param name="language" value="en-US" />' +
         '</object></div>';
 
-      // Runs only after the panel is already visible, so measurement/init is correct.
+      // Runs only after the panel is already visible, so offsetWidth is a real
+      // measurement here (not 0) — lets the embed size itself to its natural
+      // aspect ratio instead of being capped at a fixed height.
       var divElement = document.getElementById('viz1788934787901');
       var vizElement = divElement.getElementsByTagName('object')[0];
       vizElement.style.width = '100%';
-      vizElement.style.height = '360px';
+      vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
       var scriptElement = document.createElement('script');
       scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
       vizElement.parentNode.insertBefore(scriptElement, vizElement);
@@ -108,21 +110,11 @@
     });
   });
 
-  // interactive color-blob background
+  // interactive dot-mesh background
   var canvas = document.getElementById('blobCanvas');
   var ctx = canvas.getContext('2d');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var W, H, dpr;
-
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  window.addEventListener('resize', resize);
-  resize();
 
   var PILLAR_COLORS = {
     comm: [226, 139, 118],   // coral
@@ -132,22 +124,44 @@
     design: [74, 66, 56],    // warm charcoal
     default: [158, 147, 214]
   };
+  var PALETTE_KEYS = ['comm', 'write', 'ai', 'data'];
 
-  var blobs = [
-    { key: 'ai', x: 0.18, y: 0.22, r: 0.42, vx: 0.00012, vy: 0.00009, phase: 0 },
-    { key: 'comm', x: 0.82, y: 0.18, r: 0.38, vx: -0.00010, vy: 0.00012, phase: 2 },
-    { key: 'data', x: 0.75, y: 0.78, r: 0.40, vx: -0.00009, vy: -0.00011, phase: 4 },
-    { key: 'write', x: 0.22, y: 0.80, r: 0.36, vx: 0.00011, vy: -0.00008, phase: 6 }
-  ];
+  var SPACING = 42;
+  var RADIUS = 130;   // how far the cursor's influence reaches, in px
+  var MAX_PUSH = 24;  // max displacement for a dot right under the cursor, in px
+  var dots = [];
 
-  var mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+  function buildGrid() {
+    dots = [];
+    var cols = Math.ceil(W / SPACING) + 1;
+    var rows = Math.ceil(H / SPACING) + 1;
+    for (var i = 0; i < cols; i++) {
+      for (var j = 0; j < rows; j++) {
+        var hx = i * SPACING;
+        var hy = j * SPACING;
+        var colorKey = PALETTE_KEYS[(i * 7 + j * 13) % PALETTE_KEYS.length];
+        dots.push({ hx: hx, hy: hy, x: hx, y: hy, colorKey: colorKey });
+      }
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildGrid();
+  }
+  window.addEventListener('resize', resize);
+
+  var mouseX = -9999, mouseY = -9999;
   window.addEventListener('mousemove', function (e) {
-    mouse.tx = e.clientX / window.innerWidth;
-    mouse.ty = e.clientY / window.innerHeight;
+    mouseX = e.clientX; mouseY = e.clientY;
   });
+  window.addEventListener('mouseleave', function () { mouseX = -9999; mouseY = -9999; });
 
   var activePillar = 'default';
-  var sections = document.querySelectorAll('[data-section-pillar], .section');
   var pillarBySection = [
     { id: 'hero', p: 'ai' },
     { id: 'about', p: 'comm' },
@@ -171,42 +185,39 @@
     if (el) sectionObserver.observe(el);
   });
 
-  var t = 0;
   function draw() {
-    t += 1;
-    mouse.x += (mouse.tx - mouse.x) * 0.02;
-    mouse.y += (mouse.ty - mouse.y) * 0.02;
-
     ctx.clearRect(0, 0, W, H);
-    ctx.globalCompositeOperation = 'source-over';
 
-    blobs.forEach(function (b, i) {
-      var driftX = Math.sin(t * b.vx * 60 + b.phase) * 0.05;
-      var driftY = Math.cos(t * b.vy * 60 + b.phase) * 0.05;
-      var parallax = 0.04 * (i % 2 === 0 ? 1 : -1);
-      var cx = (b.x + driftX + (mouse.x - 0.5) * parallax) * W;
-      var cy = (b.y + driftY + (mouse.y - 0.5) * parallax) * H;
-      var r = b.r * Math.max(W, H);
+    for (var k = 0; k < dots.length; k++) {
+      var d = dots[k];
+      var dx = d.hx - mouseX;
+      var dy = d.hy - mouseY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var targetX = d.hx, targetY = d.hy, pushMag = 0;
 
-      var isActive = b.key === activePillar;
-      var targetOpacity = isActive ? 0.26 : 0.10;
-      b.opacity = (b.opacity === undefined ? targetOpacity : b.opacity) + (targetOpacity - (b.opacity || 0)) * 0.03;
+      if (dist < RADIUS && dist > 0.01) {
+        pushMag = (1 - dist / RADIUS) * MAX_PUSH; // closer dots get pushed further — the "unequal dispersion"
+        targetX = d.hx + (dx / dist) * pushMag;
+        targetY = d.hy + (dy / dist) * pushMag;
+      }
+      d.x += (targetX - d.x) * 0.15;
+      d.y += (targetY - d.y) * 0.15;
 
-      var color = PILLAR_COLORS[b.key];
-      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      grad.addColorStop(0, 'rgba(' + color.join(',') + ',' + b.opacity + ')');
-      grad.addColorStop(1, 'rgba(' + color.join(',') + ',0)');
-      ctx.fillStyle = grad;
+      var energy = pushMag / MAX_PUSH;
+      var size = 1.3 + energy * 1.9;
+      var baseAlpha = d.colorKey === activePillar ? 0.22 : 0.13;
+      var alpha = baseAlpha + energy * 0.4;
+
+      var color = PILLAR_COLORS[d.colorKey];
       ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.arc(d.x, d.y, size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + alpha.toFixed(3) + ')';
       ctx.fill();
-    });
+    }
 
     if (!reduceMotion) requestAnimationFrame(draw);
   }
+
+  resize();
   draw();
-  if (reduceMotion) {
-    // draw a single static soft frame
-    setTimeout(function(){ /* one frame already drawn above */ }, 0);
-  }
 })();
