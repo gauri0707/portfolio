@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gauri Krishnamoorthy Thevar — AI Product Manager</title>
+<meta name="description" content="Gauri Krishnamoorthy Thevar — AI Product Manager. Communication, writing, AI, data, and design, all in one role.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=10">
+</head>
+<body>
+
+<canvas id="blobCanvas"></canvas>
+
+<header class="site-header" id="top">
+  <nav class="nav container">
+    <a href="#top" class="brand">GKT</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#work" class="nav-link">Work</a></li>
+      <li><a href="#awake" class="nav-link">Currently</a></li>
+      <li><a href="#toolkit" class="nav-link">Toolkit</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero container" id="hero">
+    <h1 class="reveal">Gauri Krishnamoorthy&nbsp;Thevar</h1>
+    <p class="hero-sub reveal">I turn messy signals into product decisions with AI.</p>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <filter id="sketchy" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="2" seed="4" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+
+    <div class="photo-collage reveal">
+      <span class="logo-doodle logo-arm" style="left:0%; top:-34px;" title="Arm"></span>
+      <span class="doodle doodle-sun" style="left:29%; top:-32px;">☀️</span>
+      <span class="logo-doodle logo-ai" style="left:52%; top:-34px;" title="AI"></span>
+      <span class="logo-doodle logo-duke" style="right:2%; top:-32px;" title="Duke"></span>
+
+      <span class="logo-doodle logo-product" style="left:15%; top:198px;" title="Product"></span>
+      <span class="logo-doodle logo-automation" style="left:44%; top:198px;" title="Automation"></span>
+      <span class="logo-doodle logo-jio" style="right:4%; top:196px;" title="Reliance Jio"></span>
+
+      <figure class="polaroid p-1"><img src="assets/photos/bixby-bridge.jpeg" alt="Gauri at Bixby Bridge, California" loading="lazy"><figcaption>Big Sur, California</figcaption></figure>
+      <figure class="polaroid p-2"><img src="assets/photos/duke-chapel.jpeg" alt="Gauri at Duke Chapel" loading="lazy"><figcaption>Duke University</figcaption></figure>
+      <figure class="polaroid p-3"><img src="assets/photos/headshot.jpg" alt="Gauri Krishnamoorthy Thevar headshot" loading="lazy"><figcaption>Open to new opportunities</figcaption></figure>
+      <figure class="polaroid p-4"><img src="assets/photos/plant-wall.jpeg" alt="Gauri in front of a living plant wall" loading="lazy"><figcaption>San Francisco, California</figcaption></figure>
+      <figure class="polaroid p-5"><img src="assets/photos/night-sky.jpeg" alt="Gauri at a night sky watch event" loading="lazy"><figcaption>Chasing the sky</figcaption></figure>
+    </div>
+
+    <div class="hero-actions reveal">
+      <a href="#work" class="btn btn-primary">See the Work</a>
+      <a href="assets/Gauri_Krishnamoorthy_Thevar_Resume.pdf" class="btn btn-ghost" download>Download Résumé</a>
+    </div>
+    <div class="hero-links reveal">
+      <a href="mailto:gauri.k6701@gmail.com">Email</a>
+      <span class="sep">·</span>
+      <a href="https://linkedin.com/in/gauri-krishnamoorthy" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/gauri0707" target="_blank" rel="noopener">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/vizzes" target="_blank" rel="noopener">Tableau</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-red"></span>About</p>
+      <h2 class="section-title reveal">Wait, What Do You Actually Do?</h2>
+      <p class="about-intro reveal">
+        Ask five people what a product manager does and you'll get five different answers —
+        and that's sort of the point. On any given day I'm reading a
+        <span class="proof-trigger" data-proof="interview" data-p="comm" tabindex="0">user-interview transcript</span>,
+        arguing a <span class="proof-trigger" data-proof="slack" data-p="comm" tabindex="0">roadmap decision in a Slack thread</span>,
+        prompting a model to <span class="proof-trigger" data-proof="prd" data-p="write" tabindex="0">draft a PRD</span>, staring
+        at a <span class="proof-trigger" data-proof="sql" data-p="data" tabindex="0">SQL query</span>, leaving comments on a
+        <span class="proof-trigger" data-proof="figma" data-p="design" tabindex="0">Figma file</span>, or pulling it all together
+        in a <span class="proof-trigger" data-proof="tableau" data-p="data" tabindex="0">Tableau dashboard</span>.
+        <span class="proof-hint">Hover a highlighted word to see the receipts →</span>
+      </p>
+
+      <div class="proof-stage reveal" id="proofStage">
+        <p class="proof-placeholder" id="proofPlaceholder">Hover (or tap) any highlighted word above — this panel shows the actual work behind it, not just the claim.</p>
+
+        <div class="proof-content" data-panel="interview">
+          <p class="proof-kicker">User Research · CFashion</p>
+          <img class="proof-image" src="assets/photos/research-survey.jpg" alt="Primary research survey results for CFashion, 13 colorblind respondents">
+          <p class="proof-body">Primary research survey (13 colorblind respondents) run before a line of code was written — plus interviews with a colorblind student and an industry expert at Oracle.</p>
+        </div>
+
+        <div class="proof-content" data-panel="slack">
+          <p class="proof-kicker">Tools I run decisions through</p>
+          <div class="proof-toolrow">
+            <img src="assets/logos/jira.svg" alt="Jira" title="Jira">
+            <img src="assets/logos/azuredevops.svg" alt="Azure DevOps" title="Azure DevOps">
+            <img src="assets/logos/teams.svg" alt="Microsoft Teams" title="Microsoft Teams">
+            <img src="assets/logos/miro.svg" alt="Miro" title="Miro">
+            <img src="assets/logos/slack.svg" alt="Slack" title="Slack">
+          </div>
+          <p class="proof-body">Daily drivers for turning a messy thread into a decision everyone actually agreed to.</p>
+        </div>
+
+        <div class="proof-content" data-panel="prd">
+          <div class="proof-doc">
+            <div class="proof-doc-head">
+              <span class="proof-doc-icon">📄</span>
+              <div><p class="proof-doc-title">CFashion — Outfit Recommendations</p><p class="proof-doc-sub">Product Requirements Document</p></div>
+            </div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Problem</span><p>Color-blind users (300M+ globally) can't reliably identify complementary colors when shopping — no existing product addresses this in fashion.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Requirements</span><p>(1) Segmentation ≥90% confidence · (2) color-wheel + TCX-code compatibility mapping · (3) top/bottom match score</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Out of scope v1</span><p>Collaborative filtering, AR try-on</p></div>
+          </div>
+        </div>
+
+        <div class="proof-content" data-panel="sql">
+          <p class="proof-kicker">SQL · Instagram User Analytics case study</p>
+          <pre class="proof-code">SELECT user_id, COUNT(DISTINCT photo_id) AS num_liked
+FROM likes
+GROUP BY user_id
+HAVING COUNT(DISTINCT photo_id) =
+  (SELECT COUNT(DISTINCT id) FROM photos);</pre>
+          <div class="proof-table">
+            <div class="proof-table-row proof-table-head"><span>user_id</span><span>num_liked</span></div>
+            <div class="proof-table-row"><span>5</span><span>257</span></div>
+            <div class="proof-table-row"><span>14</span><span>257</span></div>
+            <div class="proof-table-row"><span>21</span><span>257</span></div>
+            <div class="proof-table-row proof-table-more">+ 10 more rows</div>
+          </div>
+          <p class="proof-body">13 accounts liking <em>every single photo</em> on the platform — a real bot-detection signal, not a toy query.</p>
+        </div>
+
+        <div class="proof-content" data-panel="figma">
+          <p class="proof-kicker">Figma · CFashion App Prototype</p>
+          <img class="proof-image" src="assets/photos/cfashion-prototype.jpg" alt="CFashion app screens designed in Figma">
+        </div>
+
+        <div class="proof-content" data-panel="tableau">
+          <p class="proof-kicker">Tableau · live, interactive</p>
+          <div class="proof-tableau" id="tableauViz"></div>
+          <a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/vizzes" target="_blank" rel="noopener" class="proof-link">View all my vizzes on Tableau Public →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-blue"></span>Experience</p>
+      <h2 class="section-title reveal">Where I've Made Things Happen</h2>
+      <p class="section-sub reveal">Each bullet is color-coded to the pillar it draws on, same key as above.</p>
+
+      <ol class="timeline">
+        <li class="timeline-item reveal">
+          <div class="timeline-meta"><span class="timeline-date">Jun 2026 – Aug 2026</span></div>
+          <div class="timeline-body">
+            <h3>Cloud AI Software Ecosystem Development Intern</h3>
+            <p class="timeline-org">Arm, Inc. · San Jose, California</p>
+            <ul>
+              <li data-p="ai">Built an end-to-end agentic workflow that collected partner-interaction signals, generated updates, and routed them through human review — cutting a week-long process to a few hours (90%+ effort reduction).</li>
+              <li data-p="data">Refined the multi-agent system with a human-approval feedback loop, reaching 85%+ of AI-drafted updates approved without edits.</li>
+              <li data-p="comm">Ran user research across the Cloud AI team to validate an MVP, then accelerated design iteration through v1/v2 files built with Figma MCP in Codex.</li>
+              <li data-p="ai">Shipped a RAG-based chatbot and action-item board that cut time-to-find updates, risks, and blockers from minutes to seconds.</li>
+              <li data-p="write">Converted UAT feedback into a 21-feature roadmap and shipped the AWS-hosted tool via a 4-week sprint, integrating Jira, Slack, Confluence, and GitHub.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item reveal">
+          <div class="timeline-meta"><span class="timeline-date">Jan 2026 – Apr 2026</span></div>
+          <div class="timeline-body">
+            <h3>Product Strategy Consultant</h3>
+            <p class="timeline-org">SutureTech · Raleigh, North Carolina</p>
+            <ul>
+              <li data-p="comm">Synthesized VoC from 20+ interviews and 6.5K+ survey responses into structured PRDs and user stories, sustaining 95% sprint velocity.</li>
+              <li data-p="write">Built software ecosystem demos and blog content for 100+ external partners, converting 5+ into pilot programs.</li>
+              <li data-p="data">Led value-based pricing strategy and revenue modeling across 7 competitive benchmarks for $15M in capital allocation.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item reveal">
+          <div class="timeline-meta"><span class="timeline-date">Oct 2023 – Jun 2025</span></div>
+          <div class="timeline-body">
+            <h3>Associate Product Manager</h3>
+            <p class="timeline-org">Reliance Jio Platforms Limited · Mumbai, India</p>
+            <ul>
+              <li data-p="ai">Built an NLP sentiment analysis tool on BigQuery to guide feature improvements, lifting app rating from 3.9 to 4.2 and CSAT by 15% in 8 months.</li>
+              <li data-p="data">Streamlined KYC document verification with OCR, cutting manual processing time by 45%.</li>
+              <li data-p="data">Built a risk-monitoring framework flagging 700K+ high-risk transactions, improving platform reliability by 55%.</li>
+              <li data-p="data">Synthesized 5+ SQL/BigQuery dashboards tracking engagement, fraud exposure, and operational KPIs for leadership.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-green"></span>Work</p>
+      <h2 class="section-title reveal">Things I've Shipped</h2>
+
+      <!-- CFashion journey -->
+      <article class="case reveal">
+        <div class="case-head">
+          <svg class="wheel-icon" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
+              stroke-dasharray="28.3 84.8" stroke="#4285F4"/>
+            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
+              stroke-dasharray="28.3 84.8" stroke="#EA4335" stroke-dashoffset="-28.3"/>
+            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
+              stroke-dasharray="28.3 84.8" stroke="#FBBC05" stroke-dashoffset="-56.6"/>
+            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
+              stroke-dasharray="28.3 84.8" stroke="#34A853" stroke-dashoffset="-84.9"/>
+          </svg>
+          <div>
+            <p class="case-tag">Machine Learning · Accessibility · Duke &amp; Mumbai University</p>
+            <h3>CFashion — a journey through the PM lifecycle</h3>
+            <p class="case-sub">Fashion recommendations for color-blind users, built end-to-end with a small team.</p>
+          </div>
+        </div>
+
+        <ol class="journey">
+          <li class="journey-step" data-p="comm">
+            <span class="j-num">01</span>
+            <div><h4>The Spark</h4>
+            <p>300 million people worldwide live with color vision deficiency. Fashion, it turns out, is one of the few places nobody had built anything for them.</p></div>
+          </li>
+          <li class="journey-step" data-p="comm">
+            <span class="j-num">02</span>
+            <div><h4>Getting Out of the Building</h4>
+            <p>Before writing a line of code: secondary research, a 130-person survey (10% colorblind), and interviews with both a colorblind student and an industry expert at Oracle.</p></div>
+          </li>
+          <li class="journey-step" data-p="write">
+            <span class="j-num">03</span>
+            <div><h4>Naming the Problem</h4>
+            <p>Six distinct pain points, boiled into one problem statement. Even the literature had gaps — existing color models topped out at 865 colors against the textile industry's 1,000+, and nobody validated recommendations at the outfit level.</p></div>
+          </li>
+          <li class="journey-step" data-p="ai">
+            <span class="j-num">04</span>
+            <div><h4>Designing &amp; Building the System</h4>
+            <p>Grounded in real color theory: three modules — segmentation (Mask R-CNN), color compatibility (ML model + color wheel + industry-standard TCX codes), and outfit recommendation. Built on 2,000 images we scraped and hand-labeled ourselves.</p></div>
+          </li>
+          <li class="journey-step" data-p="data">
+            <span class="j-num">05</span>
+            <div><h4>Shipping Smart, Not Perfect</h4>
+            <p>Rather than wait for a critical mass of users, we shipped content-based recommendations first — works from day one — with a clear path to collaborative filtering once there's real usage data.</p></div>
+          </li>
+          <li class="journey-step" data-p="design">
+            <span class="j-num">06</span>
+            <div><h4>Proof It Works</h4>
+            <p>Object detection at 78–98% confidence on real street photos, and a working app: Scan Outfit → Suitable Colors with % match → Style Outfit. Bonus case: the fashion industry wastes 92M tons of textiles a year — a recommendation engine that gets it right the first time is also a sustainability story.</p></div>
+          </li>
+        </ol>
+        <p class="case-footnote">Presented at the Aavishkar Inter-Collegiate Research Convention.</p>
+      </article>
+
+      <!-- Kashikoi -->
+      <article class="case case-compact reveal">
+        <div class="case-tags">
+          <span class="chip chip-blue">AI Product</span>
+          <span class="chip chip-ink">Independent Build</span>
+        </div>
+        <h3>Kashikoi</h3>
+        <p class="case-sub">An AI-native marketing CRM for fashion ecommerce brands — apparently I can't stop putting fashion and AI in the same sentence.</p>
+        <ul class="feature-list">
+          <li>Unifies Shopify, email, and SMS into one system</li>
+          <li>"AI Audience Brain" — semantic contact search and lookalike-audience generation via embedding models</li>
+          <li>Automated revenue-leak detection and a smart campaign creator</li>
+          <li>Full segments, analytics, and integrations dashboard</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="awake">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-yellow"></span>Right Now</p>
+      <h2 class="section-title reveal">What Keeps Me Awake These Days</h2>
+      <p class="about-intro reveal">
+        Since interning at Arm, I haven't been able to stop pulling on the thread of how chips
+        actually get made. So I'm teaching myself the entire semiconductor PM lifecycle by building
+        a simulation of it — fab to tapeout, told through a fictional chip company on a countdown clock.
+      </p>
+
+      <article class="case case-compact reveal">
+        <div class="case-tags">
+          <span class="chip chip-progress">🔧 Currently Building</span>
+          <span class="chip chip-ink">Simulation Design</span>
+        </div>
+        <h3>Halo</h3>
+        <p class="case-sub">A stateful PM simulation set at Meridian Silicon, a fictional AI-chip startup with one shot left and a countdown clock.</p>
+
+        <div class="mini-journey">
+          <span class="mini-step" data-p="write">The Setup</span>
+          <span class="mini-step" data-p="ai">Learning the Machine</span>
+          <span class="mini-step" data-p="ai">Building Station One</span>
+          <span class="mini-step" data-p="write">Designing the Arc</span>
+          <span class="mini-step" data-p="data">The Scoring Problem</span>
+        </div>
+
+        <p class="feature-note">
+          Two parts: 11 stations walking the real chip flow (fab → architecture → verification → power →
+          tapeout → software), then a 7-act arc running an actual product from requirement to succession —
+          real failure, a cast that hides information unless you ask the right question, and scoring that
+          keeps decision quality separate from outcome.
+        </p>
+        <p class="feature-note">
+          <strong>Station 01 — The Fab is live:</strong> a real yield-and-cost engine, an interactive wafer
+          simulator with plain-language breakdowns of every lever, and an adaptive knowledge check.
+        </p>
+        <a href="https://claude.ai/code/artifact/ab77feeb-53c9-42bc-9810-8b0b6e7dcf90" target="_blank" rel="noopener" class="btn btn-ghost btn-small">Play Station 01 →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="toolkit">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-blue"></span>Toolkit</p>
+      <h2 class="section-title reveal">My Toolkit</h2>
+
+      <div class="tabs reveal">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="product" data-p="comm">Product</button>
+          <button class="tab-btn" data-tab="ai" data-p="ai">AI &amp; Technical</button>
+          <button class="tab-btn" data-tab="tools" data-p="data">Tools</button>
+        </div>
+        <div class="tab-panel active" data-panel="product">
+          <div class="tags">
+            <span>Roadmapping</span><span>Feature Prioritization</span><span>UI/UX</span><span>User Stories</span>
+            <span>Agile</span><span>A/B Testing</span><span>GTM</span><span>PRDs</span><span>OKRs</span><span>KPIs</span>
+            <span>Stakeholder Management</span><span>Market Research</span><span>Prototyping</span><span>Product Launch</span>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="ai">
+          <div class="tags">
+            <span>Multi-Agent Systems</span><span>RAG Pipelines</span><span>Custom LLMs</span><span>Model Context Protocol</span>
+            <span>Prompt Engineering</span><span>Python</span><span>SQL</span><span>API Design</span><span>System Design</span>
+            <span>NLP</span><span>AWS</span><span>Git/GitHub</span>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="tools">
+          <div class="tags">
+            <span>Jira</span><span>Confluence</span><span>Figma</span><span>Miro</span><span>Azure DevOps</span>
+            <span>Tableau</span><span>Power BI</span><span>Google Analytics</span><span>Notion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="education">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-red"></span>Education</p>
+      <h2 class="section-title reveal">Where I Learned to Ask Better Questions</h2>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <h3>Duke University</h3>
+          <p class="edu-degree">Master of Engineering Management (Tech MBA)</p>
+          <p class="edu-meta">Durham, USA · Aug 2025 – Dec 2026 · GPA 3.93/4.0</p>
+          <p class="edu-coursework">Business Development, Managing Product Design, Market Research, Marketing, Product Commercialization</p>
+        </div>
+        <div class="edu-card reveal">
+          <h3>Mumbai University</h3>
+          <p class="edu-degree">Bachelor of Engineering, Computer Engineering</p>
+          <p class="edu-meta">Mumbai, India · Aug 2019 – May 2023 · GPA 3.92/4.0</p>
+          <p class="edu-coursework">Computer Science, Software Ecosystem Development, GCP, Cloud Migration, NLP, Big Data Analytics, SQL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-container">
+      <p class="section-label center reveal"><span class="tag-dot dot-green"></span>Contact</p>
+      <h2 class="section-title reveal">Let's Build Something</h2>
+      <div class="contact-actions reveal">
+        <a href="mailto:gauri.k6701@gmail.com" class="btn btn-primary">gauri.k6701@gmail.com</a>
+        <a href="https://linkedin.com/in/gauri-krishnamoorthy" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        <a href="https://github.com/gauri0707" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <p>© <span id="year"></span> Gauri Krishnamoorthy Thevar</p>
+    <a href="#top" class="back-to-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="script.js?v=6"></script>
+</body>
+</html>
