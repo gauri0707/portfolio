@@ -8,8 +8,8 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=49">
 </head>
 <body>
 
@@ -36,8 +36,24 @@
 <main>
 
   <section class="hero container" id="hero">
-    <h1 class="reveal">Gauri Krishnamoorthy&nbsp;Thevar</h1>
-    <p class="hero-sub reveal">I turn messy signals into product decisions with AI.</p>
+    <h1 class="reveal">Gauri
+      <svg class="hero-sun" viewBox="0 0 40 40" aria-hidden="true">
+        <g filter="url(#sketchy)">
+          <path class="hero-sun-ray" d="M20 2 L20 8"/>
+          <path class="hero-sun-ray" d="M31.5 8.5 L27.5 12.5"/>
+          <path class="hero-sun-ray" d="M38 20 L32 20"/>
+          <path class="hero-sun-ray" d="M31.5 31.5 L27.5 27.5"/>
+          <path class="hero-sun-ray" d="M20 38 L20 32"/>
+          <path class="hero-sun-ray" d="M8.5 31.5 L12.5 27.5"/>
+          <path class="hero-sun-ray" d="M2 20 L8 20"/>
+          <path class="hero-sun-ray" d="M8.5 8.5 L12.5 12.5"/>
+          <circle class="hero-sun-face" cx="20" cy="20" r="10.5"/>
+          <path class="hero-sun-feature" d="M15.5 18.5 Q17.5 20.5 19.5 18.5"/>
+          <path class="hero-sun-feature" d="M21.5 18.5 Q23.5 20.5 25.5 18.5"/>
+          <path class="hero-sun-feature" d="M16 23.5 Q20 27 24 23.5"/>
+        </g>
+      </svg>
+      is a user-obsessed Product Manager<br>who ships things that actually work.</h1>
 
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <filter id="sketchy" x="-20%" y="-20%" width="140%" height="140%">
@@ -64,7 +80,7 @@
     </div>
 
     <div class="hero-actions reveal">
-      <a href="#work" class="btn btn-primary">See the Work</a>
+      <a href="#work" class="btn btn-primary">See my work</a>
       <a href="assets/Gauri_Krishnamoorthy_Thevar_Resume.pdf" class="btn btn-ghost" download>Download Résumé</a>
     </div>
     <div class="hero-links reveal">
@@ -81,27 +97,99 @@
   <section class="section" id="about">
     <div class="container">
       <p class="section-label reveal"><span class="tag-dot dot-red"></span>About</p>
-      <h2 class="section-title reveal">Wait, What Do You Actually Do?</h2>
-      <p class="about-intro reveal">
-        Ask five people what a product manager does and you'll get five different answers —
-        and that's sort of the point. On any given day I'm reading a
-        <span class="proof-trigger" data-proof="interview" data-p="comm" tabindex="0">user-interview transcript</span>,
-        arguing a <span class="proof-trigger" data-proof="slack" data-p="comm" tabindex="0">roadmap decision in a Slack thread</span>,
-        prompting a model to <span class="proof-trigger" data-proof="prd" data-p="write" tabindex="0">draft a PRD</span>, staring
-        at a <span class="proof-trigger" data-proof="sql" data-p="data" tabindex="0">SQL query</span>, leaving comments on a
-        <span class="proof-trigger" data-proof="figma" data-p="design" tabindex="0">Figma file</span>, or pulling it all together
-        in a <span class="proof-trigger" data-proof="tableau" data-p="data" tabindex="0">Tableau dashboard</span>.
-        <span class="proof-hint">Hover a highlighted word to see the receipts →</span>
+      <h2 class="section-title reveal">Wait, What Do I As a Product Person Actually Do?</h2>
+      <p class="about-lead reveal">
+        Ask five people what a product manager does and you'll get five different answers...<br>
+        and that's sort of the point<span class="hand-mark">!</span>
       </p>
+      <p class="about-sub reveal">On any given day, I am:</p>
+
+      <div class="pm-checklist reveal" id="pmChecklist">
+        <button class="pm-check-item active" data-proof="interview" data-p="comm" aria-pressed="true">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">performing <strong>user research</strong></span>
+        </button>
+        <button class="pm-check-item" data-proof="slack" data-p="comm" aria-pressed="false">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">building <strong>product roadmaps</strong>, across half a dozen tools</span>
+        </button>
+        <button class="pm-check-item" data-proof="prd" data-p="write" aria-pressed="false">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">drafting a <strong>PRD</strong></span>
+        </button>
+        <button class="pm-check-item" data-proof="sql" data-p="data" aria-pressed="false">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">writing <strong>SQL queries</strong></span>
+        </button>
+        <button class="pm-check-item" data-proof="figma" data-p="design" aria-pressed="false">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">fiddling with <strong>design tools</strong></span>
+        </button>
+        <button class="pm-check-item" data-proof="tableau" data-p="data" aria-pressed="false">
+          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
+          <span class="pm-check-label">or pulling it all together on a <strong>dashboard</strong></span>
+        </button>
+      </div>
       </div>
 
-      <div class="proof-stage reveal" id="proofStage">
-        <p class="proof-placeholder" id="proofPlaceholder">Hover (or tap) any highlighted word above — this panel shows the actual work behind it, not just the claim.</p>
+      <div class="proof-stage reveal active" id="proofStage">
 
-        <div class="proof-content" data-panel="interview">
-          <p class="proof-kicker">User Research · CFashion</p>
-          <img class="proof-image" src="assets/photos/research-survey.jpg" alt="Primary research survey results for CFashion, 13 colorblind respondents">
-          <p class="proof-body">Primary research survey (13 colorblind respondents) run before a line of code was written — plus interviews with a colorblind student and an industry expert at Oracle.</p>
+        <div class="proof-content visible" data-panel="interview">
+          <p class="proof-kicker">Click any pin to see my work</p>
+          <div class="evidence-board" id="evidenceBoard">
+            <div class="board-pins" id="boardPins">
+              <button class="evidence-pin pin-1" data-idx="0" data-story="interview" data-img="assets/photos/user-interviews-crop.jpg" data-caption="Live interviews with a colorblind student and an industry expert at Oracle — not just a survey.">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/interview-tuhin-crop.jpg" alt="User interview calls">
+              </button>
+              <button class="evidence-pin pin-2" data-idx="1" data-img="assets/photos/suturetech-voc-sample-crop.jpg" data-caption="SutureTech: Voice-of-Customer research design I ran — 21 orthopedic professionals across surgeons, supply chain directors, and regulatory leads." data-note-a="21 professionals" data-note-b="I designed this study">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/suturetech-voc-sample-crop.jpg" alt="SutureTech VoC research sample and objective">
+              </button>
+              <button class="evidence-pin pin-3" data-idx="2" data-img="assets/photos/suturetech-voc-dashboard-crop.jpg" data-caption="What I found: surgeons trust clinical evidence over marketing, and value operational efficiency almost as much as outcomes." data-note-a="trust &gt; marketing" data-note-b="what they actually said">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/suturetech-voc-dashboard-crop.jpg" alt="SutureTech VoC dashboard with annotated insights">
+              </button>
+              <button class="evidence-pin pin-4" data-idx="3" data-img="assets/photos/research-survey-crop.jpg" data-caption="My primary research survey — 13 colorblind respondents, run before I wrote a line of code." data-note-a="13 respondents" data-note-b="before I wrote code">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/research-survey-crop.jpg" alt="Primary research on colorblind users">
+              </button>
+              <button class="evidence-pin pin-5" data-idx="4" data-img="assets/photos/research-primary-normal-crop.jpg" data-caption="I ran the same survey against 117 non-colorblind respondents, to compare baselines." data-note-a="117 respondents" data-note-b="the control group">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/research-primary-normal-crop.jpg" alt="Primary research on normal users">
+              </button>
+              <button class="evidence-pin pin-6" data-idx="5" data-img="assets/photos/research-secondary-crop.jpg" data-caption="My secondary research trail across Reddit and Twitter, plus a recruitment post I wrote to find real interview volunteers." data-note-a="Reddit + Twitter" data-note-b="I posted this myself">
+                <span class="pin-dot"></span>
+                <img src="assets/photos/research-secondary-crop.jpg" alt="Secondary research from Reddit and Twitter">
+              </button>
+            </div>
+            <div class="board-preview" id="boardPreview">
+              <p class="preview-placeholder" id="previewPlaceholder">hover a pin →</p>
+              <div class="preview-frame" id="previewFrame">
+                <img id="previewImg" src="" alt="">
+                <span class="sticky-note note-a" id="stickyA"></span>
+                <span class="sticky-note note-b" id="stickyB"></span>
+              </div>
+              <!-- curated whiteboard retelling of the user-interview evidence: two
+                   individually pinned call photos with a PM storyline, instead of
+                   one flat slide screenshot -->
+              <div class="board-story" id="boardStory">
+                <div class="story-photo story-photo-a">
+                  <span class="story-tag">the user</span>
+                  <img src="assets/photos/interview-tuhin-crop.jpg" alt="Video call interview with Tuhin Pal, a colorblind student">
+                  <span class="story-cap">Tuhin — lives with color blindness</span>
+                </div>
+                <span class="story-arrow">→</span>
+                <div class="story-photo story-photo-b">
+                  <span class="story-tag">the expert</span>
+                  <img src="assets/photos/interview-oracle-crop.jpg" alt="Video call interview with an industry expert at Oracle">
+                  <span class="story-cap">Then, a reality check from Oracle</span>
+                </div>
+                <span class="sticky-note story-note-a">not a survey — 2 real conversations</span>
+                <span class="sticky-note story-note-b">started with someone who actually lives the problem</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="proof-content" data-panel="slack">
@@ -406,6 +494,16 @@ HAVING COUNT(DISTINCT photo_id) =
   </div>
 </footer>
 
-<script src="script.js?v=9"></script>
+<div class="evidence-lightbox" id="evidenceLightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <div class="lb-frame">
+    <img id="lbImg" src="" alt="">
+    <p class="lb-caption" id="lbCaption"></p>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+</div>
+
+<script src="script.js?v=14"></script>
 </body>
 </html>

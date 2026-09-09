@@ -25,12 +25,12 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // proof triggers (About section hover-reveal)
+  // PM checklist (About section) — click to select, first item selected by default
   var proofStage = document.getElementById('proofStage');
   if (proofStage) {
-    var proofTriggers = document.querySelectorAll('.proof-trigger');
+    var proofTriggers = document.querySelectorAll('.pm-check-item');
     var proofPanels = proofStage.querySelectorAll('.proof-content');
-    var activeProof = null;
+    var activeProof = 'interview';
 
     var tableauLoaded = false;
     function loadTableauViz() {
@@ -77,26 +77,95 @@
         p.classList.toggle('visible', p.getAttribute('data-panel') === key);
       });
       proofTriggers.forEach(function (t) {
-        t.classList.toggle('active', t.getAttribute('data-proof') === key);
+        var isMatch = t.getAttribute('data-proof') === key;
+        t.classList.toggle('active', isMatch);
+        t.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
       });
       activeProof = key;
       if (key === 'tableau') loadTableauViz();
     }
-    function hideProof() {
-      proofStage.classList.remove('active');
-      proofStage.classList.remove('wide');
-      proofTriggers.forEach(function (t) { t.classList.remove('active'); });
-      activeProof = null;
-    }
 
     proofTriggers.forEach(function (trigger) {
       var key = trigger.getAttribute('data-proof');
-      trigger.addEventListener('mouseenter', function () { showProof(key); });
-      trigger.addEventListener('focus', function () { showProof(key); });
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
-        if (activeProof === key) { hideProof(); } else { showProof(key); }
+        showProof(key);
       });
+    });
+    showProof(activeProof);
+  }
+
+  // evidence board — whiteboard preview on hover, lightbox on click
+  var evidencePins = Array.prototype.slice.call(document.querySelectorAll('.evidence-pin'));
+  var evidenceBoard = document.getElementById('evidenceBoard');
+  if (evidenceBoard && evidencePins.length) {
+    var previewImg = document.getElementById('previewImg');
+    var previewFrame = document.getElementById('previewFrame');
+    var stickyA = document.getElementById('stickyA');
+    var stickyB = document.getElementById('stickyB');
+    var boardStory = document.getElementById('boardStory');
+
+    evidencePins.forEach(function (pin) {
+      pin.addEventListener('mouseenter', function () {
+        evidenceBoard.classList.add('active');
+        evidencePins.forEach(function (p) { p.classList.remove('active'); });
+        pin.classList.add('active');
+
+        var story = pin.getAttribute('data-story');
+        if (story && boardStory) {
+          previewFrame.style.display = 'none';
+          boardStory.classList.add('visible');
+        } else {
+          if (boardStory) boardStory.classList.remove('visible');
+          previewFrame.style.display = '';
+          previewImg.src = pin.getAttribute('data-img');
+          previewImg.alt = pin.querySelector('img').alt;
+          stickyA.textContent = pin.getAttribute('data-note-a');
+          stickyB.textContent = pin.getAttribute('data-note-b');
+        }
+      });
+    });
+    evidenceBoard.addEventListener('mouseleave', function () {
+      evidenceBoard.classList.remove('active');
+      evidencePins.forEach(function (p) { p.classList.remove('active'); });
+    });
+  }
+
+  // evidence board lightbox (About section)
+  var lightbox = document.getElementById('evidenceLightbox');
+  if (lightbox && evidencePins.length) {
+    var lbImg = document.getElementById('lbImg');
+    var lbCaption = document.getElementById('lbCaption');
+    var lbIndex = 0;
+
+    function openLightbox(i) {
+      lbIndex = (i + evidencePins.length) % evidencePins.length;
+      var pin = evidencePins[lbIndex];
+      lbImg.src = pin.getAttribute('data-img');
+      lbImg.alt = pin.querySelector('img').alt;
+      lbCaption.textContent = pin.getAttribute('data-caption');
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+    }
+
+    evidencePins.forEach(function (pin, i) {
+      pin.addEventListener('click', function () { openLightbox(i); });
+    });
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', function () { openLightbox(lbIndex - 1); });
+    document.getElementById('lbNext').addEventListener('click', function () { openLightbox(lbIndex + 1); });
+    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
+      if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
     });
   }
 
