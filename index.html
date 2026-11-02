@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=49">
+<link rel="stylesheet" href="styles.css?v=122">
 </head>
 <body>
 
@@ -24,10 +24,11 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#nivara" class="nav-link">Nivara</a></li>
       <li><a href="#work" class="nav-link">Work</a></li>
-      <li><a href="#awake" class="nav-link">Currently</a></li>
       <li><a href="#toolkit" class="nav-link">Toolkit</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#poems" class="nav-link">Poetry</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </nav>
@@ -97,98 +98,28 @@
   <section class="section" id="about">
     <div class="container">
       <p class="section-label reveal"><span class="tag-dot dot-red"></span>About</p>
-      <h2 class="section-title reveal">Wait, What Do I As a Product Person Actually Do?</h2>
-      <p class="about-lead reveal">
-        Ask five people what a product manager does and you'll get five different answers...<br>
-        and that's sort of the point<span class="hand-mark">!</span>
+      <h2 class="section-title reveal">Wait, What Do You Actually Do?</h2>
+      <p class="about-intro reveal">
+        Ask five people what a product manager does and you'll get five different answers,
+        and that's sort of the point. On any given day I'm reading a
+        <span class="proof-trigger" data-proof="interview" data-p="comm" tabindex="0">user-interview transcript</span>,
+        prompting a model to <span class="proof-trigger" data-proof="prd" data-p="write" tabindex="0">draft a PRD</span>, staring
+        at a <span class="proof-trigger" data-proof="sql" data-p="data" tabindex="0">SQL query</span>, leaving comments on a
+        <span class="proof-trigger" data-proof="figma" data-p="design" tabindex="0">Figma file</span>, pulling it all together
+        in a <span class="proof-trigger" data-proof="tableau" data-p="data" tabindex="0">Tableau dashboard</span>, or arguing a
+        <span class="proof-trigger" data-proof="slack" data-p="comm" tabindex="0">roadmap decision in a Slack thread</span>.
       </p>
-      <p class="about-sub reveal">On any given day, I am:</p>
-
-      <div class="pm-checklist reveal" id="pmChecklist">
-        <button class="pm-check-item active" data-proof="interview" data-p="comm" aria-pressed="true">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">performing <strong>user research</strong></span>
-        </button>
-        <button class="pm-check-item" data-proof="slack" data-p="comm" aria-pressed="false">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">building <strong>product roadmaps</strong>, across half a dozen tools</span>
-        </button>
-        <button class="pm-check-item" data-proof="prd" data-p="write" aria-pressed="false">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">drafting a <strong>PRD</strong></span>
-        </button>
-        <button class="pm-check-item" data-proof="sql" data-p="data" aria-pressed="false">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">writing <strong>SQL queries</strong></span>
-        </button>
-        <button class="pm-check-item" data-proof="figma" data-p="design" aria-pressed="false">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">fiddling with <strong>design tools</strong></span>
-        </button>
-        <button class="pm-check-item" data-proof="tableau" data-p="data" aria-pressed="false">
-          <span class="pm-check-box"><svg class="pm-tick-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="pm-tick-path" d="M4 10.5 L8.2 14.7 L16.5 5"/></svg></span>
-          <span class="pm-check-label">or pulling it all together on a <strong>dashboard</strong></span>
-        </button>
-      </div>
+      <p class="tour-ctl reveal"><button type="button" id="tourBtn" class="tour-btn" aria-pressed="false">Skip demo</button></p>
       </div>
 
-      <div class="proof-stage reveal active" id="proofStage">
+      <div class="proof-stage reveal" id="proofStage">
 
-        <div class="proof-content visible" data-panel="interview">
-          <p class="proof-kicker">Click any pin to see my work</p>
-          <div class="evidence-board" id="evidenceBoard">
-            <div class="board-pins" id="boardPins">
-              <button class="evidence-pin pin-1" data-idx="0" data-story="interview" data-img="assets/photos/user-interviews-crop.jpg" data-caption="Live interviews with a colorblind student and an industry expert at Oracle — not just a survey.">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/interview-tuhin-crop.jpg" alt="User interview calls">
-              </button>
-              <button class="evidence-pin pin-2" data-idx="1" data-img="assets/photos/suturetech-voc-sample-crop.jpg" data-caption="SutureTech: Voice-of-Customer research design I ran — 21 orthopedic professionals across surgeons, supply chain directors, and regulatory leads." data-note-a="21 professionals" data-note-b="I designed this study">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/suturetech-voc-sample-crop.jpg" alt="SutureTech VoC research sample and objective">
-              </button>
-              <button class="evidence-pin pin-3" data-idx="2" data-img="assets/photos/suturetech-voc-dashboard-crop.jpg" data-caption="What I found: surgeons trust clinical evidence over marketing, and value operational efficiency almost as much as outcomes." data-note-a="trust &gt; marketing" data-note-b="what they actually said">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/suturetech-voc-dashboard-crop.jpg" alt="SutureTech VoC dashboard with annotated insights">
-              </button>
-              <button class="evidence-pin pin-4" data-idx="3" data-img="assets/photos/research-survey-crop.jpg" data-caption="My primary research survey — 13 colorblind respondents, run before I wrote a line of code." data-note-a="13 respondents" data-note-b="before I wrote code">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/research-survey-crop.jpg" alt="Primary research on colorblind users">
-              </button>
-              <button class="evidence-pin pin-5" data-idx="4" data-img="assets/photos/research-primary-normal-crop.jpg" data-caption="I ran the same survey against 117 non-colorblind respondents, to compare baselines." data-note-a="117 respondents" data-note-b="the control group">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/research-primary-normal-crop.jpg" alt="Primary research on normal users">
-              </button>
-              <button class="evidence-pin pin-6" data-idx="5" data-img="assets/photos/research-secondary-crop.jpg" data-caption="My secondary research trail across Reddit and Twitter, plus a recruitment post I wrote to find real interview volunteers." data-note-a="Reddit + Twitter" data-note-b="I posted this myself">
-                <span class="pin-dot"></span>
-                <img src="assets/photos/research-secondary-crop.jpg" alt="Secondary research from Reddit and Twitter">
-              </button>
-            </div>
-            <div class="board-preview" id="boardPreview">
-              <p class="preview-placeholder" id="previewPlaceholder">hover a pin →</p>
-              <div class="preview-frame" id="previewFrame">
-                <img id="previewImg" src="" alt="">
-                <span class="sticky-note note-a" id="stickyA"></span>
-                <span class="sticky-note note-b" id="stickyB"></span>
-              </div>
-              <!-- curated whiteboard retelling of the user-interview evidence: two
-                   individually pinned call photos with a PM storyline, instead of
-                   one flat slide screenshot -->
-              <div class="board-story" id="boardStory">
-                <div class="story-photo story-photo-a">
-                  <span class="story-tag">the user</span>
-                  <img src="assets/photos/interview-tuhin-crop.jpg" alt="Video call interview with Tuhin Pal, a colorblind student">
-                  <span class="story-cap">Tuhin — lives with color blindness</span>
-                </div>
-                <span class="story-arrow">→</span>
-                <div class="story-photo story-photo-b">
-                  <span class="story-tag">the expert</span>
-                  <img src="assets/photos/interview-oracle-crop.jpg" alt="Video call interview with an industry expert at Oracle">
-                  <span class="story-cap">Then, a reality check from Oracle</span>
-                </div>
-                <span class="sticky-note story-note-a">not a survey — 2 real conversations</span>
-                <span class="sticky-note story-note-b">started with someone who actually lives the problem</span>
-              </div>
-            </div>
+        <div class="proof-content" data-panel="interview">
+          <p class="proof-kicker">User Research · CFashion</p>
+          <div class="proof-slides">
+            <figure><a href="assets/photos/slide-user-interviews.jpg" target="_blank" rel="noopener"><img src="assets/photos/slide-user-interviews.jpg" alt="User interviews slide: a call with Tuhin Pal, a colourblind student, and one with an industry expert at Oracle"></a><figcaption>User interviews</figcaption></figure>
+            <figure><a href="assets/photos/slide-primary-research.jpg" target="_blank" rel="noopener"><img src="assets/photos/slide-primary-research.jpg" alt="Primary research slide: 130 survey responses by age, gender and colour blindness"></a><figcaption>Primary research</figcaption></figure>
+            <figure><a href="assets/photos/slide-secondary-research.jpg" target="_blank" rel="noopener"><img src="assets/photos/slide-secondary-research.jpg" alt="Secondary research slide: posts from social media and forums about clothing and colour blindness"></a><figcaption>Secondary research</figcaption></figure>
           </div>
         </div>
 
@@ -204,33 +135,59 @@
           <p class="proof-body">Daily drivers for turning a messy thread into a decision everyone actually agreed to.</p>
         </div>
 
-        <div class="proof-content" data-panel="prd">
-          <div class="proof-doc">
+                <div class="proof-content" data-panel="prd">
+          <div class="prd-tabs" role="tablist" aria-label="Sample product requirements documents">
+            <button type="button" class="prd-tab on" role="tab" aria-selected="true" data-prd="cfashion">CFashion</button>
+            <button type="button" class="prd-tab" role="tab" aria-selected="false" data-prd="agentassist">AgentAssist</button>
+            <button type="button" class="prd-tab" role="tab" aria-selected="false" data-prd="pantrypal">PantryPal</button>
+          </div>
+          <div class="proof-doc" data-prd="cfashion">
             <div class="proof-doc-head">
               <span class="proof-doc-icon">📄</span>
-              <div><p class="proof-doc-title">CFashion — Outfit Recommendations</p><p class="proof-doc-sub">Product Requirements Document</p></div>
+              <div><p class="proof-doc-title">CFashion: Outfit Recommendations</p><p class="proof-doc-sub">Product Requirements Document</p></div>
             </div>
-            <div class="proof-doc-row"><span class="proof-doc-label">Problem</span><p>Color-blind users (300M+ globally) can't reliably identify complementary colors when shopping — no existing product addresses this in fashion.</p></div>
-            <div class="proof-doc-row"><span class="proof-doc-label">Requirements</span><p>(1) Segmentation ≥90% confidence · (2) color-wheel + TCX-code compatibility mapping · (3) top/bottom match score</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Problem</span><p>Color-blind users (300M+ globally) can't reliably identify complementary colors when shopping. No existing product addresses this in fashion, and the few color models that exist stop at 865 colors against the textile industry's 1,000+.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Users</span><p>Color-blind shoppers who choose their own outfits (primary). Friends and family who currently help them decide what matches (secondary).</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Success metrics</span><p>Garment detection at 90% confidence or higher on real street photos. Color matching that covers 1,000+ textile colors. A full Scan Outfit, Suitable Colors, Style Outfit flow that needs no help from a sighted person.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Requirements</span><ul class="prd-list"><li><b>P0</b> Segment top, bottom and accessories from a photo at 90% confidence or higher</li><li><b>P0</b> Color-wheel and TCX-code compatibility mapping across 1,000+ textile colors</li><li><b>P0</b> Top and bottom match score, shown as a percentage on every suggestion</li><li><b>P1</b> Content-based recommendations that work from day one, with no usage history needed</li></ul></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Risks</span><p>Small training set: 2,000 hand-labeled images, so confidence is checked on real street photos, not only the training data. No usage data yet: ship content-based recommendations first and add collaborative filtering once there is real usage.</p></div>
             <div class="proof-doc-row"><span class="proof-doc-label">Out of scope v1</span><p>Collaborative filtering, AR try-on</p></div>
+          </div>
+
+          <div class="proof-doc" data-prd="agentassist" hidden>
+            <div class="proof-doc-head">
+              <span class="proof-doc-icon">📄</span>
+              <div><p class="proof-doc-title">AgentAssist: RAG Copilot for Support Agents</p><p class="proof-doc-sub">Product Requirements Document · Sample</p></div>
+            </div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Problem</span><p>Tier-1 agents search five different knowledge bases during every live chat. Handle time stays high, and two agents often give two different answers to the same question.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Users</span><p>Tier-1 support agents (primary). Team leads and QA analysts who review conversations (secondary).</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Success metrics</span><p>Average handle time down 15%. First-contact resolution up 5 points. At least 70% of suggested answers accepted by agents.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Requirements</span><ul class="prd-list"><li><b>P0</b> Answer only from approved articles and show the source link next to every answer</li><li><b>P0</b> Respond in under 3 seconds inside the live chat window</li><li><b>P0</b> One-click thumbs up or down on each answer, reviewed weekly by the content team</li><li><b>P1</b> Auto-generated handoff summary when a chat moves to tier 2</li></ul></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Risks</span><p>Wrong answers: show "no confident answer" below a retrieval threshold and fall back to plain search. Stale articles: the knowledge base team owns a weekly review of low-rated answers.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Out of scope v1</span><p>Voice calls, auto-sending replies to customers, multilingual support</p></div>
+          </div>
+          <div class="proof-doc" data-prd="pantrypal" hidden>
+            <div class="proof-doc-head">
+              <span class="proof-doc-icon">📄</span>
+              <div><p class="proof-doc-title">PantryPal: Cut Household Food Waste</p><p class="proof-doc-sub">Product Requirements Document · Sample</p></div>
+            </div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Problem</span><p>Households throw away roughly a third of the food they buy, mostly because they forget what is in the fridge and when it expires. Existing grocery apps help people buy, not use what they already have.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Users</span><p>Busy two-income households and shared student flats that grocery shop once a week.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Success metrics</span><p>30% fewer discarded items per household after 8 weeks. 40% of users still active in week 4. Under 10 seconds to add a full grocery trip.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Requirements</span><ul class="prd-list"><li><b>P0</b> Add items by scanning a receipt or barcode, with manual entry as a fallback</li><li><b>P0</b> Reminder 2 days before expiry, paired with a recipe that uses the item</li><li><b>P0</b> Shared household pantry so two people always see the same list</li><li><b>P1</b> Weekly summary of food saved and money saved</li></ul></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Risks</span><p>Data entry fatigue: scanning is the default path. Notification fatigue: cap reminders at one digest per day, and let users pick the time.</p></div>
+            <div class="proof-doc-row"><span class="proof-doc-label">Out of scope v1</span><p>Grocery delivery integration, nutrition tracking, smart fridge hardware</p></div>
           </div>
         </div>
 
         <div class="proof-content" data-panel="sql">
-          <p class="proof-kicker">SQL · Instagram User Analytics case study</p>
-          <pre class="proof-code">SELECT user_id, COUNT(DISTINCT photo_id) AS num_liked
-FROM likes
-GROUP BY user_id
-HAVING COUNT(DISTINCT photo_id) =
-  (SELECT COUNT(DISTINCT id) FROM photos);</pre>
-          <div class="proof-table">
-            <div class="proof-table-row proof-table-head"><span>user_id</span><span>num_liked</span></div>
-            <div class="proof-table-row"><span>5</span><span>257</span></div>
-            <div class="proof-table-row"><span>14</span><span>257</span></div>
-            <div class="proof-table-row"><span>21</span><span>257</span></div>
-            <div class="proof-table-row proof-table-more">+ 10 more rows</div>
+          <p class="proof-kicker">SQL · Instagram User Analytics and Operation Analytics case studies</p>
+          <div class="proof-slides two">
+            <figure><a href="assets/photos/sql-contest-winner.jpg" target="_blank" rel="noopener"><img src="assets/photos/sql-contest-winner.jpg" alt="Instagram case study slide: finding the contest winner with nested subqueries and the result"></a><figcaption>Nested subqueries · Instagram</figcaption></figure>
+            <figure><a href="assets/photos/sql-hashtags.jpg" target="_blank" rel="noopener"><img src="assets/photos/sql-hashtags.jpg" alt="Instagram case study slide: top 5 hashtags using joins across the photo tags and tags tables"></a><figcaption>Multi-table joins · Instagram</figcaption></figure>
+            <figure><a href="assets/photos/sql-bot-detection.jpg" target="_blank" rel="noopener"><img src="assets/photos/sql-bot-detection.jpg" alt="Instagram case study slide: detecting bot accounts with GROUP BY, HAVING and a subquery, 13 accounts found"></a><figcaption>HAVING with a subquery · Instagram</figcaption></figure>
+            <figure><a href="assets/photos/sql-rolling-throughput.jpg" target="_blank" rel="noopener"><img src="assets/photos/sql-rolling-throughput.jpg" alt="Operation analytics slide: 7-day rolling average throughput using a window function"></a><figcaption>Window function, 7-day rolling average · Operations</figcaption></figure>
           </div>
-          <p class="proof-body">13 accounts liking <em>every single photo</em> on the platform — a real bot-detection signal, not a toy query.</p>
         </div>
 
         <div class="proof-content" data-panel="figma">
@@ -239,8 +196,13 @@ HAVING COUNT(DISTINCT photo_id) =
         </div>
 
         <div class="proof-content" data-panel="tableau">
-          <p class="proof-kicker">Tableau · live, interactive</p>
-          <div class="proof-tableau" id="tableauViz"></div>
+          <p class="proof-kicker">Tableau · click any viz to open the interactive version</p>
+          <div class="proof-slides two">
+            <figure><a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/viz/HansRosling200countries200years/Gauri-HansRoslingChart" target="_blank" rel="noopener"><img src="assets/photos/tableau-hans-rosling.jpg" alt="Hans Rosling style bubble chart of life expectancy against income per person for 200 countries, coloured by region"></a><figcaption>Hans Rosling: 200 countries, 200 years ↗</figcaption></figure>
+            <figure><a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/viz/ParetoChart_16905998727950/ParetoChart" target="_blank" rel="noopener"><img src="assets/photos/tableau-pareto.jpg" alt="Pareto chart of sales by sub-category with a running percentage line reaching 100%"></a><figcaption>Pareto chart: sales by sub-category ↗</figcaption></figure>
+            <figure><a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/viz/SuperMarketAnalysis_16890493164150/HierarchicalCascadingFIlter" target="_blank" rel="noopener"><img src="assets/photos/tableau-cascading-filter.jpg" alt="Line chart of monthly sales with hierarchical and cascading region, state and customer filters"></a><figcaption>Hierarchical and cascading filters ↗</figcaption></figure>
+            <figure><a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/viz/AirbnbAnalysis_16906082536180/Sheet8" target="_blank" rel="noopener"><img src="assets/photos/tableau-airbnb.jpg" alt="Bar chart of average Airbnb price by neighbourhood in Brooklyn"></a><figcaption>Airbnb analysis: price by neighbourhood ↗</figcaption></figure>
+          </div>
           <a href="https://public.tableau.com/app/profile/gauri.krishnamoorthy/vizzes" target="_blank" rel="noopener" class="proof-link">View all my vizzes on Tableau Public →</a>
         </div>
       </div>
@@ -250,170 +212,264 @@ HAVING COUNT(DISTINCT photo_id) =
     <div class="container">
       <p class="section-label reveal"><span class="tag-dot dot-blue"></span>Experience</p>
       <h2 class="section-title reveal">Where I've Made Things Happen</h2>
-      <p class="section-sub reveal">Each bullet is color-coded to the pillar it draws on, same key as above.</p>
 
-      <ol class="timeline">
-        <li class="timeline-item reveal">
-          <div class="timeline-meta"><span class="timeline-date">Jun 2026 – Aug 2026</span></div>
-          <div class="timeline-body">
-            <h3>Cloud AI Software Ecosystem Development Intern</h3>
-            <p class="timeline-org">Arm, Inc. · San Jose, California</p>
-            <ul>
-              <li data-p="ai">Built an end-to-end agentic workflow that collected partner-interaction signals, generated updates, and routed them through human review — cutting a week-long process to a few hours (90%+ effort reduction).</li>
-              <li data-p="data">Refined the multi-agent system with a human-approval feedback loop, reaching 85%+ of AI-drafted updates approved without edits.</li>
-              <li data-p="comm">Ran user research across the Cloud AI team to validate an MVP, then accelerated design iteration through v1/v2 files built with Figma MCP in Codex.</li>
-              <li data-p="ai">Shipped a RAG-based chatbot and action-item board that cut time-to-find updates, risks, and blockers from minutes to seconds.</li>
-              <li data-p="write">Converted UAT feedback into a 21-feature roadmap and shipped the AWS-hosted tool via a 4-week sprint, integrating Jira, Slack, Confluence, and GitHub.</li>
-            </ul>
+      <div class="xp reveal" id="xp">
+        <div class="xp-stage">
+          <svg class="xp-ufo" viewBox="262 84 156 54" aria-hidden="true">
+            <path d="M310 112Q310 90 340 90Q370 90 370 112" fill="#fff" stroke="#4A4238" stroke-width="1.5"/>
+            <ellipse cx="340" cy="116" rx="70" ry="14" fill="#2B2622"/>
+            <ellipse cx="340" cy="114" rx="63" ry="9.5" fill="none" stroke="#6B6259" stroke-width="1"/>
+            <ellipse cx="340" cy="130" rx="20" ry="3.5" fill="#E3B94E"/>
+          </svg>
+          <div class="xp-beam" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="xp-card">
+            <article class="xp-panel" role="tabpanel" id="xp-panel-arm" aria-labelledby="xp-tab-arm" data-k="arm">
+              <header class="xp-head">
+                <span class="xp-mark"><img class="l-arm" src="assets/logos/arm.svg" alt=""></span>
+                <div class="xp-who"><h3>Cloud AI Software Ecosystem Development Intern</h3><p>Arm · San Jose, California</p></div>
+                <span class="xp-date">Jun – Aug 2026</span>
+              </header>
+              <p class="xp-desc">Delivered a 0-to-1 agentic AI platform in 8 weeks by owning the Jira backlog, writing user stories with acceptance criteria, and accepting each release through UAT across 3 MVP cycles. Interviewed 5 stakeholders to map how client activity was tracked by hand, then built an agent that pulled 6 scattered channels into structured updates and replaced 100+ hours of manual reporting a month. A human-in-the-loop review flow raised acceptance of AI updates from 50% to 85% and cut factual errors by 88%, while task-based model routing lowered inference cost by 56%.</p>
+            </article>
+            <article class="xp-panel" role="tabpanel" id="xp-panel-sut" aria-labelledby="xp-tab-sut" data-k="sut">
+              <header class="xp-head">
+                <span class="xp-mark"><img class="l-st" src="assets/logos/suturetech.png" alt=""></span>
+                <div class="xp-who"><h3>Product Strategy Consultant</h3><p>SutureTech · Raleigh, North Carolina</p></div>
+                <span class="xp-date">Jan – Apr 2026</span>
+              </header>
+              <p class="xp-desc">Ran a voice-of-customer study with 21 orthopedic professionals across surgeons, supply chain directors, and regulatory leads, then synthesized 20+ interviews and 6.5K+ survey responses into PRDs and user stories while sustaining 95% sprint velocity. The research showed that surgeons trust clinical evidence over marketing and value operational efficiency as much as outcomes. Built demos and blog content for 100+ external partners, converting 5+ into pilot programs, and led value-based pricing and revenue modeling across 7 competitive benchmarks for $15M in capital allocation.</p>
+            </article>
+            <article class="xp-panel" role="tabpanel" id="xp-panel-jio" aria-labelledby="xp-tab-jio" data-k="jio">
+              <header class="xp-head">
+                <span class="xp-mark"><img class="l-jio" src="assets/logos/jio-blue.svg" alt=""></span>
+                <div class="xp-who"><h3>Associate Product Manager</h3><p>Reliance Jio Platforms Limited · Mumbai, India</p></div>
+                <span class="xp-date">Oct 2023 – Jun 2025</span>
+              </header>
+              <p class="xp-desc">Launched the first iOS version of an Android-only app serving 5M+ retail partners by authoring 35+ BRDs and 75+ user stories, rebuilding it in React Native, and running UAT, unlocking $113M in incremental annual revenue. Cut churn from 12% to 9% with a plan-expiry reminder and lifted onboarding conversion by 62% by choosing an OCR vendor and automating ID capture. Traced a Google Analytics mismatch in SQL to location spoofing and shipped the fix that caught 700K+ fraudulent transactions.</p>
+            </article>
+            <article class="xp-panel" role="tabpanel" id="xp-panel-pa" aria-labelledby="xp-tab-pa" data-k="pa">
+              <header class="xp-head">
+                <span class="xp-mark"><img class="l-pa" src="assets/logos/pa.svg" alt=""></span>
+                <div class="xp-who"><h3>Business Analyst Intern</h3><p>Power Audit · Mumbai, India</p></div>
+                <span class="xp-date">Apr 2021 – Oct 2022</span>
+              </header>
+              <p class="xp-desc">Interviewed and shadowed 5+ user groups across facilities, operations, and finance to understand how power usage was tracked, and found a 20% gap between logged and actual energy use. Turned that gap into prioritized requirements, validated across 2 MVP cycles, and drove development of an IoT system that replaced paper logging with automated monitoring reported daily instead of monthly. Manual intervention fell by 90%, and the first enterprise client cut power consumption by 40% and saved $40,000 a year.</p>
+            </article>
           </div>
-        </li>
-
-        <li class="timeline-item reveal">
-          <div class="timeline-meta"><span class="timeline-date">Jan 2026 – Apr 2026</span></div>
-          <div class="timeline-body">
-            <h3>Product Strategy Consultant</h3>
-            <p class="timeline-org">SutureTech · Raleigh, North Carolina</p>
-            <ul>
-              <li data-p="comm">Synthesized VoC from 20+ interviews and 6.5K+ survey responses into structured PRDs and user stories, sustaining 95% sprint velocity.</li>
-              <li data-p="write">Built software ecosystem demos and blog content for 100+ external partners, converting 5+ into pilot programs.</li>
-              <li data-p="data">Led value-based pricing strategy and revenue modeling across 7 competitive benchmarks for $15M in capital allocation.</li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="timeline-item reveal">
-          <div class="timeline-meta"><span class="timeline-date">Oct 2023 – Jun 2025</span></div>
-          <div class="timeline-body">
-            <h3>Associate Product Manager</h3>
-            <p class="timeline-org">Reliance Jio Platforms Limited · Mumbai, India</p>
-            <ul>
-              <li data-p="ai">Built an NLP sentiment analysis tool on BigQuery to guide feature improvements, lifting app rating from 3.9 to 4.2 and CSAT by 15% in 8 months.</li>
-              <li data-p="data">Streamlined KYC document verification with OCR, cutting manual processing time by 45%.</li>
-              <li data-p="data">Built a risk-monitoring framework flagging 700K+ high-risk transactions, improving platform reliability by 55%.</li>
-              <li data-p="data">Synthesized 5+ SQL/BigQuery dashboards tracking engagement, fraud exposure, and operational KPIs for leadership.</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
+          <div class="xp-link" aria-hidden="true"></div>
+        </div>
+        <div class="xp-dock" role="tablist" aria-label="Work experience">
+          <button class="xp-tab" type="button" role="tab" id="xp-tab-arm" aria-controls="xp-panel-arm" aria-selected="false" data-k="arm">
+            <span class="xp-tile"><img class="l-arm" src="assets/logos/arm.svg" alt=""></span>
+            <b>Arm</b><small>Jun – Aug 2026</small>
+          </button>
+          <button class="xp-tab" type="button" role="tab" id="xp-tab-sut" aria-controls="xp-panel-sut" aria-selected="false" data-k="sut">
+            <span class="xp-tile"><img class="l-st" src="assets/logos/suturetech.png" alt=""></span>
+            <b>SutureTech</b><small>Jan – Apr 2026</small>
+          </button>
+          <button class="xp-tab" type="button" role="tab" id="xp-tab-jio" aria-controls="xp-panel-jio" aria-selected="true" data-k="jio">
+            <span class="xp-tile"><img class="l-jio" src="assets/logos/jio-blue.svg" alt=""></span>
+            <b>Reliance Jio</b><small>Oct 2023 – Jun 2025</small>
+          </button>
+          <button class="xp-tab" type="button" role="tab" id="xp-tab-pa" aria-controls="xp-panel-pa" aria-selected="false" data-k="pa">
+            <span class="xp-tile"><img class="l-pa" src="assets/logos/pa.svg" alt=""></span>
+            <b>Power Audit</b><small>Apr 2021 – Oct 2022</small>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="work">
+  <section class="section" id="nivara">
+    <div class="container nv">
+      <p class="section-label reveal"><span class="tag-dot dot-green"></span>Zero to One</p>
+
+      <div class="nv-hero reveal">
+        <div class="nv-hero-text">
+          <h2 class="nv-title">Nivara: building a smart tent from zero</h2>
+          <p>A tent that opens its own vents and turns on fans when you get too warm. Problem, prototypes, real campers, a trade show.</p>
+          <ul class="nv-roles" aria-label="My roles"><li>Student co-founder</li><li>Product</li><li>Marketing</li><li>Sales</li></ul>
+        </div>
+        <img class="nv-hero-img" src="assets/nivara/hero.jpg" alt="The Nivara prototype on a tent, with a motorised vent opening in the fabric" width="1400" height="1050">
+      </div>
+
+      <nav class="nv-nav reveal" id="nvNav" aria-label="Nivara chapters">
+        <a href="#nv-1"><small>01 · Spark</small><b>2am</b><span>Heat, humidity, manual vents</span></a>
+        <a href="#nv-2"><small>02 · Validate</small><b>74.4%</b><span>found it &ldquo;very appealing&rdquo;</span></a>
+        <a href="#nv-3"><small>03 · Build</small><b>v1 &rarr; v4</b><span>four prototype generations</span></a>
+        <a href="#nv-4"><small>04 · Prove</small><b>4 of 4</b><span>test cases verified</span></a>
+        <a href="#nv-5"><small>05 · Market</small><b>$5&ndash;10M</b><span>realistic revenue target</span></a>
+        <a href="#nv-6"><small>06 · Sell</small><b>3 channels</b><span>planned: Amazon, Walmart, Target</span></a>
+      </nav>
+
+      <h3 class="nv-journey-title reveal">From a hot night to a trade show floor</h3>
+      <p class="nv-journey-sub reveal">Six chapters, each one backed by something we made or measured.</p>
+
+      <div class="nv-rail">
+
+        <article class="nv-ch reveal" id="nv-1">
+          <div class="nv-num" aria-hidden="true">01</div>
+          <div class="nv-copy">
+            <p class="nv-k">The spark</p>
+            <h3>Tents trap heat, and nobody wants to unzip a vent at 2am</h3>
+            <p>Traditional tents rely on passive ventilation, so body heat and humidity build up and sleep suffers. Manual vents mean getting up, fighting zippers and guessing.</p>
+          </div>
+          <div class="nv-pics"><img class="nv-wide" src="assets/nivara/spark.jpg" alt="A dome tent pitched in a forest at dusk" loading="lazy" style="object-position:center 62%"></div>
+        </article>
+
+        <article class="nv-ch reveal" id="nv-2">
+          <div class="nv-num" aria-hidden="true">02</div>
+          <div class="nv-copy">
+            <p class="nv-k">Validate before building</p>
+            <h3>We asked real campers first</h3>
+            <p>Surveys plus on-the-ground testing at the Duke Campout event and Instagram reach-outs. Campers also asked for solar charging and LED indicators, which went on the roadmap.</p>
+            <div class="nv-bar" role="img" aria-label="How often campers feel uncomfortable in a tent: always 21%, often 26%, sometimes 42%, rarely or never 11%"><i style="width:21.1%;background:#4a4238"></i><i style="width:26.3%;background:#8a8076"></i><i style="width:42.1%;background:#bdb3a6"></i><i style="width:10.6%;background:#e8e2d9"></i></div>
+            <p class="nv-cap">How often do you feel uncomfortable in a tent? Always 21% &middot; Often 26% &middot; Sometimes 42% &middot; Rarely or never 11%</p>
+          </div>
+          <div class="nv-pics nv-3">
+            <img src="assets/nivara/persona-alex.jpg" alt="Persona: Alex Chen, the performance-oriented athlete" loading="lazy">
+            <img src="assets/nivara/persona-daniel.jpg" alt="Persona: Daniel Reyes, the mission-driven professional" loading="lazy">
+            <img src="assets/nivara/persona-maya.jpg" alt="Persona: Maya Lopez, the experience-seeking explorer" loading="lazy">
+          </div>
+        </article>
+
+        <article class="nv-ch reveal" id="nv-3">
+          <div class="nv-num" aria-hidden="true">03</div>
+          <div class="nv-copy">
+            <p class="nv-k">Build</p>
+            <h3>Four prototype generations, then packaging</h3>
+            <p>From a plywood shutter to a fan module mounted on a real tent, with a motor, gears, two temperature sensors and a custom circuit board.</p>
+            <figure class="nv-video nv-video-wide" data-name="prototype demo">
+              <video muted loop playsinline preload="metadata" disablepictureinpicture poster="assets/nivara/prototype-demo.jpg" aria-label="Prototype demo: the vent on the tent is closed, opens to reveal the fan, then closes again"><source src="assets/nivara/prototype-demo.mp4" type="video/mp4"></video>
+              <button type="button" class="nv-vbtn" aria-label="Pause the prototype demo">Pause</button>
+              <figcaption>Prototype demo: the vent opens to the fan and closes again (middle section sped up)</figcaption>
+            </figure>
+          </div>
+          <div class="nv-pics nv-grid3">
+            <figure><img src="assets/nivara/v1.jpg" alt="Prototype v1.0: a plywood shutter plate" loading="lazy"><b>v1.0</b></figure>
+            <figure><img src="assets/nivara/v2.jpg" alt="Prototype v2.0: a fan fitted inside a housing" loading="lazy"><b>v2.0</b></figure>
+            <figure><img src="assets/nivara/v3.jpg" alt="Prototype v3.0: shutter, gear, motor and electronics on a workbench" loading="lazy"><b>v3.0</b></figure>
+            <figure class="nv-span2"><img src="assets/nivara/v4.jpg" alt="Prototype v4.0: the vent module mounted on a real tent and wired up" loading="lazy"><b>v4.0</b></figure>
+            <figure><img src="assets/nivara/pcb.jpg" alt="Render of the custom circuit board" loading="lazy"><b>PCB</b></figure>
+            <div class="nv-videos">
+              <figure class="nv-video" data-name="shutter animation">
+                <video muted loop playsinline preload="metadata" disablepictureinpicture poster="assets/nivara/anim-shutter.jpg" aria-label="CAD animation of the shutter opening and closing, driven by a gear"><source src="assets/nivara/anim-shutter.mp4" type="video/mp4"></video>
+                <button type="button" class="nv-vbtn" aria-label="Pause the shutter animation">Pause</button>
+                <figcaption>CAD animation: the shutter</figcaption>
+              </figure>
+              <figure class="nv-video" data-name="vent assembly animation">
+                <video muted loop playsinline preload="metadata" disablepictureinpicture poster="assets/nivara/anim-leaves.jpg" aria-label="CAD animation of the vent assembly with its swinging leaves"><source src="assets/nivara/anim-leaves.mp4" type="video/mp4"></video>
+                <button type="button" class="nv-vbtn" aria-label="Pause the vent assembly animation">Pause</button>
+                <figcaption>CAD animation: the vent assembly</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="nv-ch reveal" id="nv-4">
+          <div class="nv-num" aria-hidden="true">04</div>
+          <div class="nv-copy">
+            <p class="nv-k">Prove it works</p>
+            <h3>Heat pack, ice pack, and four test cases</h3>
+            <p>A bench test used a heat pack and an ice pack to simulate hot and cold, inside and outside. All four conditions behaved as expected: vent open and fan on when it needed cooling, closed and off when it was cold.</p>
+          </div>
+          <div class="nv-pics nv-2">
+            <img class="nv-contain" src="assets/nivara/chart.jpg" alt="Chart of modelled steady-state interior temperature against outside temperature, with and without a fan" loading="lazy">
+            <img src="assets/nivara/breadboard.jpg" alt="The control electronics wired up on a breadboard with a battery" loading="lazy">
+          </div>
+        </article>
+
+        <article class="nv-ch reveal" id="nv-5">
+          <div class="nv-num" aria-hidden="true">05</div>
+          <div class="nv-copy">
+            <p class="nv-k">Market it</p>
+            <h3>Who it is for and where it fits</h3>
+            <p>Three personas, a market sized from top to bottom, and a crowded field with room for a niche smart tent. The North Face, Big Agnes and NEMO dominate, but the market is fragmented.</p>
+          </div>
+          <div class="nv-pics">
+            <figure class="nv-card">
+              <svg viewBox="0 0 520 200" role="img" aria-label="Market size: TAM $6 to 8 billion, SAM $500 to 800 million, SOM $5 to 10 million">
+                <circle cx="150" cy="100" r="92" fill="#f2eee8" stroke="#d8cfc3" stroke-width="2"/>
+                <circle cx="150" cy="134" r="58" fill="#e8e0d4" stroke="#c8bdae" stroke-width="2"/>
+                <circle cx="150" cy="158" r="34" fill="#4a4238"/>
+                <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" text-anchor="middle"><text x="150" y="30" fill="#4a4238">TAM</text><text x="150" y="104" fill="#4a4238">SAM</text><text x="150" y="163" fill="#fff">SOM</text></g>
+                <g font-family="Inter, sans-serif" font-size="14" fill="#2b2622"><text x="290" y="40" font-weight="700">$6&#8211;8B</text><text x="290" y="58" fill="#6b6259" font-size="12.5">global tent market, per year</text><text x="290" y="104" font-weight="700">$500&#8211;800M</text><text x="290" y="122" fill="#6b6259" font-size="12.5">North America + Western Europe</text><text x="290" y="168" font-weight="700">$5&#8211;10M</text><text x="290" y="186" fill="#6b6259" font-size="12.5">1&#8211;2% share at $400&#8211;500 a tent</text></g>
+              </svg>
+            </figure>
+          </div>
+        </article>
+
+        <article class="nv-ch reveal" id="nv-6">
+          <div class="nv-num" aria-hidden="true">06</div>
+          <div class="nv-copy">
+            <p class="nv-k">Sell</p>
+            <h3>A trade show, a value chain, and a path to customers</h3>
+            <p>Our go-to-market plan: buy standard tents in bulk, refactor them with Nivara&rsquo;s vent module, then sell on Amazon, Walmart and Target and on a direct-to-consumer site. We presented the prototype live at a trade show.</p>
+          </div>
+          <div class="nv-pics nv-2">
+            <img src="assets/nivara/tradeshow-1.jpg" alt="Visitors looking at the Nivara prototype at the trade show" loading="lazy">
+            <img src="assets/nivara/tradeshow-team.jpg" alt="The Nivara team standing behind the prototype tent at the trade show" loading="lazy">
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="work">
     <div class="container">
       <p class="section-label reveal"><span class="tag-dot dot-green"></span>Work</p>
-      <h2 class="section-title reveal">Things I've Shipped</h2>
+      <h2 class="section-title reveal">How I Think Through a Case</h2>
 
-      <!-- CFashion journey -->
-      <article class="case reveal">
-        <div class="case-head">
-          <svg class="wheel-icon" viewBox="0 0 40 40" aria-hidden="true">
-            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
-              stroke-dasharray="28.3 84.8" stroke="#4285F4"/>
-            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
-              stroke-dasharray="28.3 84.8" stroke="#EA4335" stroke-dashoffset="-28.3"/>
-            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
-              stroke-dasharray="28.3 84.8" stroke="#FBBC05" stroke-dashoffset="-56.6"/>
-            <circle cx="20" cy="20" r="18" fill="none" stroke-width="4"
-              stroke-dasharray="28.3 84.8" stroke="#34A853" stroke-dashoffset="-84.9"/>
-          </svg>
-          <div>
-            <p class="case-tag">Machine Learning · Accessibility · Duke &amp; Mumbai University</p>
-            <h3>CFashion — a journey through the PM lifecycle</h3>
-            <p class="case-sub">Fashion recommendations for color-blind users, built end-to-end with a small team.</p>
-          </div>
-        </div>
-
-        <ol class="journey">
-          <li class="journey-step" data-p="comm">
-            <span class="j-num">01</span>
-            <div><h4>The Spark</h4>
-            <p>300 million people worldwide live with color vision deficiency. Fashion, it turns out, is one of the few places nobody had built anything for them.</p></div>
-          </li>
-          <li class="journey-step" data-p="comm">
-            <span class="j-num">02</span>
-            <div><h4>Getting Out of the Building</h4>
-            <p>Before writing a line of code: secondary research, a 130-person survey (10% colorblind), and interviews with both a colorblind student and an industry expert at Oracle.</p></div>
-          </li>
-          <li class="journey-step" data-p="write">
-            <span class="j-num">03</span>
-            <div><h4>Naming the Problem</h4>
-            <p>Six distinct pain points, boiled into one problem statement. Even the literature had gaps — existing color models topped out at 865 colors against the textile industry's 1,000+, and nobody validated recommendations at the outfit level.</p></div>
-          </li>
-          <li class="journey-step" data-p="ai">
-            <span class="j-num">04</span>
-            <div><h4>Designing &amp; Building the System</h4>
-            <p>Grounded in real color theory: three modules — segmentation (Mask R-CNN), color compatibility (ML model + color wheel + industry-standard TCX codes), and outfit recommendation. Built on 2,000 images we scraped and hand-labeled ourselves.</p></div>
-          </li>
-          <li class="journey-step" data-p="data">
-            <span class="j-num">05</span>
-            <div><h4>Shipping Smart, Not Perfect</h4>
-            <p>Rather than wait for a critical mass of users, we shipped content-based recommendations first — works from day one — with a clear path to collaborative filtering once there's real usage data.</p></div>
-          </li>
-          <li class="journey-step" data-p="design">
-            <span class="j-num">06</span>
-            <div><h4>Proof It Works</h4>
-            <p>Object detection at 78–98% confidence on real street photos, and a working app: Scan Outfit → Suitable Colors with % match → Style Outfit. Bonus case: the fashion industry wastes 92M tons of textiles a year — a recommendation engine that gets it right the first time is also a sustainability story.</p></div>
-          </li>
-        </ol>
-        <p class="case-footnote">Presented at the Aavishkar Inter-Collegiate Research Convention.</p>
-      </article>
-
-      <!-- Kashikoi -->
-      <article class="case case-compact reveal">
-        <div class="case-tags">
-          <span class="chip chip-blue">AI Product</span>
-          <span class="chip chip-ink">Independent Build</span>
-        </div>
-        <h3>Kashikoi</h3>
-        <p class="case-sub">An AI-native marketing CRM for fashion ecommerce brands — apparently I can't stop putting fashion and AI in the same sentence.</p>
-        <ul class="feature-list">
-          <li>Unifies Shopify, email, and SMS into one system</li>
-          <li>"AI Audience Brain" — semantic contact search and lookalike-audience generation via embedding models</li>
-          <li>Automated revenue-leak detection and a smart campaign creator</li>
-          <li>Full segments, analytics, and integrations dashboard</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="awake">
-    <div class="container">
-      <p class="section-label reveal"><span class="tag-dot dot-yellow"></span>Right Now</p>
-      <h2 class="section-title reveal">What Keeps Me Awake These Days</h2>
-      <p class="about-intro reveal">
-        Since interning at Arm, I haven't been able to stop pulling on the thread of how chips
-        actually get made. So I'm teaching myself the entire semiconductor PM lifecycle by building
-        a simulation of it — fab to tapeout, told through a fictional chip company on a countdown clock.
-      </p>
-
-      <article class="case case-compact reveal">
-        <div class="case-tags">
-          <span class="chip chip-progress">🔧 Currently Building</span>
-          <span class="chip chip-ink">Simulation Design</span>
-        </div>
-        <h3>Halo</h3>
-        <p class="case-sub">A stateful PM simulation set at Meridian Silicon, a fictional AI-chip startup with one shot left and a countdown clock.</p>
-
-        <div class="mini-journey">
-          <span class="mini-step" data-p="write">The Setup</span>
-          <span class="mini-step" data-p="ai">Learning the Machine</span>
-          <span class="mini-step" data-p="ai">Building Station One</span>
-          <span class="mini-step" data-p="write">Designing the Arc</span>
-          <span class="mini-step" data-p="data">The Scoring Problem</span>
-        </div>
-
-        <p class="feature-note">
-          Two parts: 11 stations walking the real chip flow (fab → architecture → verification → power →
-          tapeout → software), then a 7-act arc running an actual product from requirement to succession —
-          real failure, a cast that hides information unless you ask the right question, and scoring that
-          keeps decision quality separate from outcome.
-        </p>
-        <p class="feature-note">
-          <strong>Station 01 — The Fab is live:</strong> a real yield-and-cost engine, an interactive wafer
-          simulator with plain-language breakdowns of every lever, and an adaptive knowledge check.
-        </p>
-        <a href="https://claude.ai/code/artifact/ab77feeb-53c9-42bc-9810-8b0b6e7dcf90" target="_blank" rel="noopener" class="btn btn-ghost btn-small">Play Station 01 →</a>
-      </article>
+      <!-- Case study presentations -->
+      <p class="decks-intro reveal">Case study presentations I've delivered. Open one to flip through the slides.</p>
+      <div class="deck-grid">
+        <a class="deck-card reveal" href="assets/decks/ecommerce/01.jpg" data-deck="ecommerce" aria-haspopup="dialog">
+          <span class="deck-cover"><img src="assets/decks/ecommerce/01.jpg" alt="e-Commerce Marketing Automation deck cover" loading="lazy"></span>
+          <span class="deck-body">
+            <span class="deck-tag">Market analysis · Solo</span>
+            <h3>e-Commerce Marketing Automation</h3>
+            <span class="deck-desc">Why ecommerce marketing automation is still fragmented, where mid-market brands get stranded between Mailchimp and Salesforce, and the case for backing a platform consolidator.</span>
+            <span class="deck-open">9 slides · Open deck</span>
+          </span>
+        </a>
+        <a class="deck-card reveal" href="assets/decks/spotify/01.jpg" data-deck="spotify" aria-haspopup="dialog">
+          <span class="deck-cover"><img src="assets/decks/spotify/01.jpg" alt="Spotify case study deck cover" loading="lazy"></span>
+          <span class="deck-body">
+            <span class="deck-tag">Strategy · Team case</span>
+            <h3>Spotify: Massive Growth, Persistent Losses</h3>
+            <span class="deck-desc">How Spotify can reach sustainable profitability while keeping growth and innovation, from music costs and monetization to bundling pressure from Apple, Amazon and YouTube.</span>
+            <span class="deck-open">16 slides · Open deck</span>
+          </span>
+        </a>
+        <a class="deck-card reveal" href="assets/decks/mmbc/01.jpg" data-deck="mmbc" aria-haspopup="dialog">
+          <span class="deck-cover"><img src="assets/decks/mmbc/01.jpg" alt="Mountain Man Brewing Company deck cover" loading="lazy"></span>
+          <span class="deck-body">
+            <span class="deck-tag">Brand strategy · Team case</span>
+            <h3>Mountain Man Brewing Company</h3>
+            <span class="deck-desc">Whether the brewer should launch a lighter beer, covering brand equity, younger drinkers and on-premise growth, with break-even and cannibalization analysis.</span>
+            <span class="deck-open">4 slides · Open deck</span>
+          </span>
+        </a>
+        <a class="deck-card reveal" href="assets/decks/drinkworks/01.jpg" data-deck="drinkworks" aria-haspopup="dialog">
+          <span class="deck-cover"><img src="assets/decks/drinkworks/01.jpg" alt="Drinkworks case study deck cover" loading="lazy"></span>
+          <span class="deck-body">
+            <span class="deck-tag">Go-to-market · Team case</span>
+            <h3>Drinkworks: Home Cocktails at the Push of a Button</h3>
+            <span class="deck-desc">Qualitative and quantitative analysis of an at-home cocktail machine, covering segmentation, positioning, price points and margins, with recommendations on product, pricing and distribution.</span>
+            <span class="deck-open">13 slides · Open deck</span>
+          </span>
+        </a>
+        <a class="deck-card reveal" href="assets/decks/seeds21/01.jpg" data-deck="seeds21" aria-haspopup="dialog">
+          <span class="deck-cover"><img src="assets/decks/seeds21/01.jpg" alt="21Seeds case study deck cover" loading="lazy"></span>
+          <span class="deck-body">
+            <span class="deck-tag">Brand strategy · Team case</span>
+            <h3>21Seeds: Scale the Brand, Protect the Soul</h3>
+            <span class="deck-desc">How Diageo can scale a founder-led tequila brand without losing what made it work, from target customers and channels to awareness and a path toward 300K+ cases in 5 years.</span>
+            <span class="deck-open">11 slides · Open deck</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -422,31 +478,29 @@ HAVING COUNT(DISTINCT photo_id) =
       <p class="section-label reveal"><span class="tag-dot dot-blue"></span>Toolkit</p>
       <h2 class="section-title reveal">My Toolkit</h2>
 
+      <p class="toolkit-note reveal">Every skill here appears on at least one of my resumes.</p>
       <div class="tabs reveal">
         <div class="tab-buttons">
           <button class="tab-btn active" data-tab="product" data-p="comm">Product</button>
-          <button class="tab-btn" data-tab="ai" data-p="ai">AI &amp; Technical</button>
-          <button class="tab-btn" data-tab="tools" data-p="data">Tools</button>
+          <button class="tab-btn" data-tab="ba" data-p="write">Business Analysis</button>
+          <button class="tab-btn" data-tab="data" data-p="data">Data &amp; Analytics</button>
+          <button class="tab-btn" data-tab="ai" data-p="ai">AI &amp; Engineering</button>
+          <button class="tab-btn" data-tab="tools" data-p="design">Tools</button>
         </div>
         <div class="tab-panel active" data-panel="product">
-          <div class="tags">
-            <span>Roadmapping</span><span>Feature Prioritization</span><span>UI/UX</span><span>User Stories</span>
-            <span>Agile</span><span>A/B Testing</span><span>GTM</span><span>PRDs</span><span>OKRs</span><span>KPIs</span>
-            <span>Stakeholder Management</span><span>Market Research</span><span>Prototyping</span><span>Product Launch</span>
-          </div>
+          <div class="tags"><span>Agile/Scrum</span><span>Stakeholder Management</span><span>User Stories</span><span>Product Roadmapping</span><span>Success Metrics</span><span>Voice of Customer</span><span>Prioritization</span><span>Release Management</span><span>Customer Segmentation</span><span>Customer Discovery</span><span>Sprint Planning</span><span>PRDs</span><span>Go-to-Market Strategy</span><span>Backlog Prioritization</span><span>User Research</span><span>Product Backlog</span><span>Cross-Functional Collaboration</span><span>Competitive Benchmarking</span><span>Product Strategy</span><span>Customer Interviews</span><span>Market Research</span><span>Product Discovery</span><span>Product Positioning</span><span>Competitive Analysis</span><span>Backlog Management</span><span>Executive Presentations</span><span>Pricing Strategy</span><span>Product Launch</span><span>Prototyping</span><span>AI Prototyping</span><span>Release Planning</span><span>Wireframing</span><span>MVP Scoping</span><span>Product Analytics</span></div>
+        </div>
+        <div class="tab-panel" data-panel="ba">
+          <div class="tags"><span>UAT</span><span>Requirements Elicitation</span><span>Acceptance Criteria</span><span>Root Cause Analysis</span><span>Process Mapping</span><span>Vendor Evaluation</span><span>Gap Analysis</span><span>BRDs</span><span>System Integrations</span><span>Workflow Automation</span><span>Documentation</span><span>Requirements Traceability</span><span>Process Improvement</span><span>Flow Diagrams</span><span>Workflow Mapping</span><span>Process Modeling</span><span>Defect Triage</span><span>Solution Architecture</span><span>SDLC</span><span>Functional Specifications</span><span>BPMN</span><span>Onsite Deployment</span><span>Swimlane Diagrams</span><span>Project Planning</span><span>Business Cases</span><span>Status Reporting</span><span>Dependency Management</span><span>Solution Design</span><span>Requirements Documentation</span><span>Automation</span><span>Workflow Analysis</span><span>Defect Tracking</span><span>Acceptance Testing</span><span>Value Stream Mapping</span><span>Functional Requirements</span></div>
+        </div>
+        <div class="tab-panel" data-panel="data">
+          <div class="tags"><span>SQL</span><span>Python</span><span>Excel</span><span>A/B Testing</span><span>Dashboard Design</span><span>KPI Definition</span><span>Pandas</span><span>Funnel Analysis</span><span>Data Validation</span><span>Hadoop</span><span>Anomaly Detection</span><span>Forecasting</span><span>Cohort Analysis</span><span>Event Tracking Schema</span><span>Data Quality</span><span>Fraud Analytics</span><span>Pricing Analysis</span><span>Data Reconciliation</span><span>Retention Analysis</span><span>Event Tagging</span><span>Data QA</span><span>Churn Analysis</span><span>Data Pipelines</span><span>Reporting</span><span>Text Analytics</span><span>Time Series Anomaly Detection</span><span>Hypothesis Testing</span><span>Data Analysis</span><span>Data Visualization</span><span>Trend Analysis</span><span>Report Automation</span><span>Financial Modeling</span><span>Fraud Detection</span><span>Experimentation</span><span>Risk Analytics</span></div>
         </div>
         <div class="tab-panel" data-panel="ai">
-          <div class="tags">
-            <span>Multi-Agent Systems</span><span>RAG Pipelines</span><span>Custom LLMs</span><span>Model Context Protocol</span>
-            <span>Prompt Engineering</span><span>Python</span><span>SQL</span><span>API Design</span><span>System Design</span>
-            <span>NLP</span><span>AWS</span><span>Git/GitHub</span>
-          </div>
+          <div class="tags"><span>MCP</span><span>LLM Evaluation</span><span>AI Agents</span><span>RAG</span><span>Prompt Design</span><span>NLP</span><span>APIs</span><span>Vector Search</span><span>Node.js</span><span>React Native</span><span>Sentiment Analysis</span><span>Human-in-the-Loop Review</span><span>Generative AI</span><span>Computer Vision</span><span>Machine Learning</span><span>Error Analysis</span><span>Model Routing</span><span>LLMs</span><span>Responsible AI</span><span>Fine-Tuning</span><span>MongoDB</span><span>OCR Evaluation</span><span>Express</span><span>LoRA</span><span>Recommendation Systems</span><span>JavaScript</span><span>Inference Cost Optimization</span><span>REST APIs</span><span>Model Cards</span><span>Guardrails</span><span>Agentic Workflows</span><span>Precision and Recall</span><span>AI Ethics</span><span>SFT</span><span>Debugging</span></div>
         </div>
         <div class="tab-panel" data-panel="tools">
-          <div class="tags">
-            <span>Jira</span><span>Confluence</span><span>Figma</span><span>Miro</span><span>Azure DevOps</span>
-            <span>Tableau</span><span>Power BI</span><span>Google Analytics</span><span>Notion</span>
-          </div>
+          <div class="tags"><span>Looker Studio</span><span>Google Analytics 4</span><span>Jira</span><span>Codex</span><span>Hugging Face</span><span>Claude Code</span><span>BigQuery</span><span>Tableau</span><span>Figma</span><span>Git/GitHub</span><span>Docker</span><span>Custom GPTs</span><span>Confluence</span><span>AWS</span><span>Azure DevOps</span><span>Streamlit</span><span>AWS EC2</span><span>AWS S3</span><span>Salesforce</span><span>SAP</span><span>UiPath</span><span>Microsoft PowerPoint</span><span>Microsoft Word</span><span>CRM</span><span>NVIDIA GPUs</span><span>Microsoft Teams</span><span>Vertex AI Search</span><span>Microsoft Outlook</span><span>Adobe Analytics</span><span>Snowflake</span><span>Microsoft Office Suite</span><span>Visio</span><span>REFramework</span></div>
         </div>
       </div>
     </div>
@@ -473,10 +527,125 @@ HAVING COUNT(DISTINCT photo_id) =
     </div>
   </section>
 
-  <section class="section" id="contact">
+  <section class="section" id="poems">
+    <div class="container">
+      <p class="section-label reveal"><span class="tag-dot dot-red"></span>Poetry</p>
+      <h2 class="section-title reveal">Poems I wrote when words were easier than talking</h2>
+      <p class="poems-sub reveal">A small wall of postcards. Open one to read the whole poem.</p>
+      <div class="pc-wall">
+        <button type="button" class="pc" data-poem="mahi" style="--r:-0.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">01</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M26 70l30-44 10 7-30 44z" fill="#FBF1DA"/><path d="M62 26l8-12 8 5-6 12"/><circle cx="90" cy="62" r="11" fill="#FBEBE6"/><path d="M82 58c5 3 11 3 16 0M82 66c5-3 11-3 16 0"/><path d="M16 80h96" stroke-dasharray="3 5"/></g></svg></span>
+          <span class="pc-title">Dear Mahi…</span>
+          <span class="pc-teaser">The sphere of Indian cricket has blown,<br>Credits to players&#x27; maturity shown.</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="csk" style="--r:1.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">02</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 16h40v22c0 12-8 20-20 20s-20-8-20-20z" fill="#FBF1DA"/><path d="M40 22H26c0 14 6 20 16 22M80 22h14c0 14-6 20-16 22"/><path d="M60 58v12M44 78h32M48 70h24" /><path d="M54 30l4 4 8-8"/></g></svg></span>
+          <span class="pc-title">2023 CSK Win</span>
+          <span class="pc-teaser">It was a test of loyalty when rain smelt down,<br>No change in the numbers, without seeing mahi, no one left the town.</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="city" style="--r:-1.2deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">03</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 78h100"/><path d="M18 78V40h18v38M40 78V26h20v52M64 78V46h16v32M84 78V34h18v44" fill="#EFEBFA"/><path d="M45 36h2M45 46h2M45 56h2M52 36h2M52 46h2M52 56h2"/><circle cx="70" cy="70" r="3"/><path d="M70 73v5"/></g></svg></span>
+          <span class="pc-title">A Silent Girl in the ‘City of Dreams’</span>
+          <span class="pc-teaser">A silent little girl enters the city of dreams,<br>unaware of its language, race and culture.</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="child" style="--r:0.9deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">04</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="48" width="30" height="30" rx="3" fill="#EFEBFA"/><rect x="48" y="48" width="30" height="30" rx="3" fill="#FBF1DA"/><rect x="31" y="16" width="30" height="30" rx="3" fill="#FBEBE6"/><path d="M82 70l10-26 10 26z" fill="#EBF3E7"/><circle cx="104" cy="26" r="9"/></g></svg></span>
+          <span class="pc-title">Can you recognise the child in me?</span>
+          <span class="pc-teaser">Yes I get interested by building blocks,<br>The colours, the shapes, the pictures</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="happier" style="--r:-1.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">05</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="46" r="30" fill="#FBF1DA"/><path d="M46 56c9 10 19 10 28 0"/><path d="M48 38h.01M72 38h.01" stroke-width="4"/></g></svg></span>
+          <span class="pc-title">Be a little happier today</span>
+          <span class="pc-teaser">We are so engrossed to make everyone laugh,<br>Though in bits and pieces or however may it be crappy,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="chosen" style="--r:1.2deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">06</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M26 66l-6-34 22 16 18-26 18 26 22-16-6 34z" fill="#FBF1DA"/><path d="M26 74h68"/><circle cx="20" cy="30" r="3"/><circle cx="60" cy="22" r="3"/><circle cx="100" cy="30" r="3"/></g></svg></span>
+          <span class="pc-title">The Chosen One</span>
+          <span class="pc-teaser">&quot;Silence for a while and the world labels you aberrant,<br>Your knowledge, your words could be too abrasive for everyone to understand,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="heartbrain" style="--r:-0.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">07</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 66c-14-10-18-24-8-32 6-5 14-2 18 4 4-6 12-9 18-4 10 8 6 22-8 32l-10 8z" fill="#FBEBE6"/><path d="M78 30c8-8 22-4 22 8 4 4 2 12-4 14 0 8-8 12-14 8-6 0-10-6-8-12-6-4-4-14 4-18z" fill="#EFEBFA"/><path d="M60 54h14" stroke-dasharray="2 4"/></g></svg></span>
+          <span class="pc-title">The heart or the brain</span>
+          <span class="pc-teaser">Knowing what you do,<br>Or doing what you know?</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="tough" style="--r:1.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">08</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 28c14-6 62-6 76 0 2 20-4 38-38 46-34-8-40-26-38-46z" fill="#EFEBFA"/><path d="M38 44c4-3 10-3 14 0M68 44c4-3 10-3 14 0"/><path d="M46 60c8 6 20 6 28 0"/></g></svg></span>
+          <span class="pc-title">Tough for Imitation</span>
+          <span class="pc-teaser">I finished watching a thriller series a few days back,<br>I was glad that I watched it,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="truelove" style="--r:-1.2deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">09</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M60 44c-8-18-30-22-34-8-2 10 8 16 20 14-10 4-14 14-8 20 6 6 18 0 22-12z" fill="#EFEBFA"/><path d="M60 44c8-18 30-22 34-8 2 10-8 16-20 14 10 4 14 14 8 20-6 6-18 0-22-12z" fill="#FBEBE6"/><path d="M60 38v34M56 30l-6-8M64 30l6-8"/></g></svg></span>
+          <span class="pc-title">One true love</span>
+          <span class="pc-teaser">The tickling sensation of the butterflies in me, have been for so long,<br>The first sight of you, walking through the hallway, ufff... My intentions weren&#x27;t wrong</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="understanding" style="--r:0.9deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">10</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 66c4-30 28-44 58-40-14 6-22 16-24 30 16-6 28-6 38 2-24 6-44 14-72 8z" fill="#FBF1DA"/><path d="M84 34l8-6M88 44l10-2" stroke-dasharray="2 4"/></g></svg></span>
+          <span class="pc-title">Understanding Us</span>
+          <span class="pc-teaser">Neither a metre apart, nor a mile,<br>I accept your problems, your fights and your smile,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="whatarewe" style="--r:-1.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">11</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22h54a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H44l-14 12V56h-12a6 6 0 0 1-6-6V28a6 6 0 0 1 6-6z" fill="#EFEBFA"/><path d="M56 48h40a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6h-4v10l-12-10H62a6 6 0 0 1-6-6V54a6 6 0 0 1 0-6z" fill="#FBF1DA"/><path d="M28 36h30M28 44h18"/></g></svg></span>
+          <span class="pc-title">What are we?</span>
+          <span class="pc-teaser">We did not have the best of starts,<br>Neither did I, nor did you,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="friendfoe" style="--r:1.2deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">12</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M60 26c-10-8-28-8-40-4v48c12-4 30-4 40 4z" fill="#EBF3E7"/><path d="M60 26c10-8 28-8 40-4v48c-12-4-30-4-40 4z" fill="#FBF1DA"/><path d="M60 26v48M28 36h24M28 46h20M68 36h24M68 46h20"/></g></svg></span>
+          <span class="pc-title">Irrespective we a friend or a foe</span>
+          <span class="pc-teaser">A man of moods,<br>Rather a king of moods I&#x27;d say,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="appa" style="--r:-1.8deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">13</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 46L60 14l42 32"/><path d="M28 42v32h64V42" fill="#EBF3E7"/><path d="M52 74V54h16v20"/><path d="M96 20c-3-4-9-1-7 4 2 4 7 7 7 7s5-3 7-7c2-5-4-8-7-4z" fill="#FBEBE6"/></g></svg></span>
+          <span class="pc-title">Appa</span>
+          <span class="pc-teaser">Many say that I look like my father,<br>I love to believe but it’s not just looks rather,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+        <button type="button" class="pc" data-poem="chitthi" style="--r:1.2deg" aria-haspopup="dialog">
+          <span class="pc-stamp" aria-hidden="true">14</span>
+          <span class="pc-art" aria-hidden="true"><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><g fill="none" stroke="#4a4238" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 30l4 9 10 1-8 6 3 10-9-6-9 6 3-10-8-6 10-1z" fill="#FBF1DA"/><path d="M78 14l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z" fill="#FBF1DA"/><path d="M60 62l-3 5M64 58l22-30"/><path d="M86 28l6-2M86 28l-1 6"/><circle cx="100" cy="62" r="3"/><circle cx="40" cy="74" r="2.4"/></g></svg></span>
+          <span class="pc-title">Chitthi Chitappa</span>
+          <span class="pc-teaser">Amid millions of stars in the spirited sky,<br>Even when an Orion, a Leo and a Scorpio passed by,</span>
+          <span class="pc-read" aria-hidden="true">Read &rsaquo;</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="contact">
     <div class="container contact-container">
       <p class="section-label center reveal"><span class="tag-dot dot-green"></span>Contact</p>
       <h2 class="section-title reveal">Let's Build Something</h2>
+      <div class="intro-video reveal" id="introVideo" data-id="BNIryYWOu1g">
+        <div class="iv-frame">
+          <div class="iv-holder"></div>
+          <noscript><a class="iv-fallback" href="https://youtu.be/BNIryYWOu1g" target="_blank" rel="noopener">Watch &ldquo;Hi, I am Gauri.&rdquo; on YouTube</a></noscript>
+        </div>
+        <p class="iv-note">Plays muted on its own. Use the speaker icon in the player for sound, or <a href="https://youtu.be/BNIryYWOu1g" target="_blank" rel="noopener">watch it on YouTube</a>.</p>
+      </div>
       <div class="contact-actions reveal">
         <a href="mailto:gauri.k6701@gmail.com" class="btn btn-primary">gauri.k6701@gmail.com</a>
         <a href="https://linkedin.com/in/gauri-krishnamoorthy" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
@@ -503,7 +672,58 @@ HAVING COUNT(DISTINCT photo_id) =
   </div>
   <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
 </div>
+<div class="deck-viewer" id="deckViewer" role="dialog" aria-modal="true" aria-labelledby="dvTitle" hidden>
+  <div class="dv-bar">
+    <p class="dv-title" id="dvTitle"></p>
+    <p class="dv-count" id="dvCount" aria-live="polite"></p>
+    <button type="button" class="dv-close" id="dvClose" aria-label="Close deck viewer">Close</button>
+  </div>
+  <div class="dv-stage">
+    <button type="button" class="dv-nav dv-prev" id="dvPrev" aria-label="Previous slide">‹</button>
+    <img class="dv-img" id="dvImg" alt="">
+    <button type="button" class="dv-nav dv-next" id="dvNext" aria-label="Next slide">›</button>
+  </div>
+  <div class="dv-thumbs" id="dvThumbs"></div>
+</div>
+<div class="poem-viewer" id="poemViewer" role="dialog" aria-modal="true" aria-labelledby="pvTitle" hidden>
+  <div class="pv-card" id="pvCard">
+    <aside class="pv-side">
+      <span class="pv-stamp" id="pvStamp" aria-hidden="true"></span>
+      <p class="pv-meta" id="pvMeta"></p>
+      <div class="pv-art" id="pvArt" aria-hidden="true"></div>
+      <h3 class="pv-title" id="pvTitle"></h3>
+      <div class="pv-nav">
+        <button type="button" id="pvPrev"></button>
+        <button type="button" id="pvNext"></button>
+        <button type="button" class="pv-all" id="pvAll">All poems</button>
+      </div>
+    </aside>
+    <div class="pv-paper">
+      <button type="button" class="pv-close" id="pvClose" aria-label="Close poem">Close &#10005;</button>
+      <div class="pv-text" id="pvText" tabindex="0"></div>
+      <div class="pv-fade" id="pvFade" aria-hidden="true">Scroll to keep reading &darr;</div>
+    </div>
+  </div>
+</div>
+<div hidden id="poemData">
+    <template id="pt-appa" data-title="Appa" data-n="13" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M18 46L60 14l42 32&quot;/&gt;&lt;path d=&quot;M28 42v32h64V42&quot; fill=&quot;#EBF3E7&quot;/&gt;&lt;path d=&quot;M52 74V54h16v20&quot;/&gt;&lt;path d=&quot;M96 20c-3-4-9-1-7 4 2 4 7 7 7 7s5-3 7-7c2-5-4-8-7-4z&quot; fill=&quot;#FBEBE6&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>Many say that I look like my father,<br>I love to believe but it’s not just looks rather,<br>To me, to amma, to Surya you’re the pillar<br>Of Love, concern, and laughter<br>You definitely are a great seller!</p><p>Appa I remember how I was nurtured,<br>When amma taught me to be humble,<br>You taught me how, no matter what, not to crumble.<br>Many a place have you shown me,<br>But all I enjoyed was your humour<br>Be it high in the mountains or deep in the sea.</p><p>29 cities, 7 states, 5 schools, 2 countries,<br>You made us travel so much,<br>You’ve always let our horizon of happiness touch!<br>But since many years have you been in travel,<br>You work so hard, you comprise on yourself for us,<br>You never cry, you never show, you don’t even discuss,<br>But don’t you worry appa, I hope to join you soon in the battle!</p><p>Many say that I look like my father,<br>I love to believe but it’s not just looks rather,<br>I sometimes ask you to walk a little slower appa,<br>Be it 2 or 20, I&#x27;ve not let go of your hand,<br>Slowly and steadily I&#x27;m following your footsteps,<br>I&#x27;ll surely one day learn to take my own stand.<br>For you who can say, she&#x27;s my child, she&#x27;s like me,<br>Proudly can you cherish that not just by looks, not just by eyes,<br>K Gauri is best as Gauri Krishnamoorthy!</p></template>
+    <template id="pt-chitthi" data-title="Chitthi Chitappa" data-n="14" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M20 30l4 9 10 1-8 6 3 10-9-6-9 6 3-10-8-6 10-1z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M78 14l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M60 62l-3 5M64 58l22-30&quot;/&gt;&lt;path d=&quot;M86 28l6-2M86 28l-1 6&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;62&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;40&quot; cy=&quot;74&quot; r=&quot;2.4&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>Amid millions of stars in the spirited sky,<br>Even when an Orion, a Leo and a Scorpio passed by,<br>My birth was anticipated by many, was surrounded, was blessed, was celebrated,<br>But only you were the shooting star, I could ever wish for.<br>Today is not the day to praise my parents,<br>But the day to acknowledge someone else&#x27;s presence, whom I never thanked before.</p><p>I am the eldest kid of my home,<br>my grandparents were rejoiced when it was known,<br>When my mother gave birth to flesh and blood,<br>She stood by, carried me, spilt an extra tear,<br>When I was trying to walk, to support, my mother held a hand,<br>And she with her tender skin and boldly opinions, taught me how to stand,<br>Nearing was the day when I had to leave to my father&#x27;s place,<br>She knew it coming, she had foreseen this day,<br>But she refused to stay and came along, no matter her career was at stake.<br>My family believes, I am their lucky charm,<br>But I want to register this note on this planet,<br>Any day, any given time,<br>She is and always be my guardian angel,<br>Her importance in my life is no less than my mother&#x27;s parallel.</p><p>Many were the years until I said she is just mine,<br>But sooner came the day, when she tied knots to another family,<br>Now my duty became to understand the new person who had already caught my mind.<br>He convinced me that he&#x27;ll take good care of the woman who held the position of my mother,<br>For years had he waited to marry someone amazing like her.<br>I&#x27;ve always been so attached to my father as you might know,<br>But whenever appa couldn&#x27;t be around,<br>Chitappa has been my pillar of strength and  motivation during my highs and low,<br>Both of you are a undetatchable part of my soul.<br>And my love for you only increased as you were, one, two or four.</p><p>Will I remember you after you&#x27;ve left this country?<br>May be only when I visit our native,<br>Because I share memories with you,<br>Or may be only when I watch Thalaiva&#x27;s movie<br>Because I&#x27;ve enjoyed outings with you,<br>Or may be only when I&#x27;m sick,<br>Because my cure was dependent on home remedies given by you,<br>And finally, most importantly, when I go to sleep,<br>Because I love you and now that you&#x27;re leaving,<br>only in dreams can I see you!</p></template>
+    <template id="pt-mahi" data-title="Dear Mahi…" data-n="01" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M26 70l30-44 10 7-30 44z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M62 26l8-12 8 5-6 12&quot;/&gt;&lt;circle cx=&quot;90&quot; cy=&quot;62&quot; r=&quot;11&quot; fill=&quot;#FBEBE6&quot;/&gt;&lt;path d=&quot;M82 58c5 3 11 3 16 0M82 66c5-3 11-3 16 0&quot;/&gt;&lt;path d=&quot;M16 80h96&quot; stroke-dasharray=&quot;3 5&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>The sphere of Indian cricket has blown,<br>Credits to players&#x27; maturity shown.<br>But we witnessed a period when,<br>One gone, two gone, all fell down,<br>There came Mahi from a small town.<br>The count of trophies is proof of his success,<br>But how humbly could he say, it is just the process.</p><p>A bouncer, a Yorker or a slow ball,<br>Everyone knows that he&#x27;s a master of all.<br>Opening or finishing, that&#x27;s just a spot,<br>He can blow your minds with just one Helicopter shot.</p><p>From being humble after winning,<br>To being passive-aggressive on the field to leave his haters thrilling,<br>A supreme example of balance for all.</p><p>Many spread hatred once,<br>You gave them attention not.<br>They tried doing it twice,<br>And then they thought,<br>No captain can ever replace you and never will,<br>Because to our conscience, we know,<br>You are irreplaceable still!</p></template>
+    <template id="pt-csk" data-title="2023 CSK Win" data-n="02" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M40 16h40v22c0 12-8 20-20 20s-20-8-20-20z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M40 22H26c0 14 6 20 16 22M80 22h14c0 14-6 20-16 22&quot;/&gt;&lt;path d=&quot;M60 58v12M44 78h32M48 70h24&quot; /&gt;&lt;path d=&quot;M54 30l4 4 8-8&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>It was a test of loyalty when rain smelt down,<br>No change in the numbers, without seeing mahi, no one left the town.<br>Is it your last? #DefinatelyNot<br>The opponent may have the best of lot,<br>But only he sets the plot.<br>Mahi the mastermind,<br>Makes the best use of newbie or experienced, player of any kind.</p><p>It&#x27;s dangerous to be in the crowd, a roar more than 120 decibels loud,<br>We debate about north or the south,<br>What Ranchi, what Chennai, every stadium is his home ground!</p><p>I had an argument with a dhoni fan,<br>Whose love is greater, yours or mine,<br>However I proved my affection, baking cakes, watching you live or finishing your sixes with my crying,<br>I never felt this jealous of having to share my passion,<br>Mahi is the apple of my eye, you&#x27;ve not even known a drop of my emotion.</p><p>And I always say,<br>Many spread hatred once,<br>You gave them attention not.<br>They tried doing it twice,<br>And then they thought,<br>No captain can ever replace you and never will,<br>Because to our conscience, we know,<br>You are irreplaceable still!</p></template>
+    <template id="pt-city" data-title="A Silent Girl in the ‘City of Dreams’" data-n="03" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M10 78h100&quot;/&gt;&lt;path d=&quot;M18 78V40h18v38M40 78V26h20v52M64 78V46h16v32M84 78V34h18v44&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;path d=&quot;M45 36h2M45 46h2M45 56h2M52 36h2M52 46h2M52 56h2&quot;/&gt;&lt;circle cx=&quot;70&quot; cy=&quot;70&quot; r=&quot;3&quot;/&gt;&lt;path d=&quot;M70 73v5&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>A silent little girl enters the city of dreams,<br>unaware of its language, race and culture.<br>&#x27;City of dreams&#x27;, as the name implies, is full of colours, aspirations and undeniably new people!</p><p>The causes of  confusion were many, didn&#x27;t she have answers to any,<br>&quot;Tumhara naam kya hai?&quot; is all she knew back then,<br>A corner of the class was her peaceful den.</p><p>Can I not ever make friends?<br>Am I that bad with communication?<br>Did you ever speak, asked the people who surrounded.<br>My importance in school was just mere.<br>The reason, I understood, was inability to speak in Hindi and that just brought in fear.</p><p>But not everything remains dark forever as my mother said. There came a competition named Elocution as the notice read.</p><p>I spoke what I felt but not in Hindi. That was my first lively appearance in front of the same strange audience back in school.</p><p>Who would have believed that I can bag a prize in a speech competition.<br>The same girl who labelled herself an introvert had now known the thin line of difference between speaking and communication!</p><p>Get your point across, enlighten the crowd with your wisdom, confess feelings to someone special. The key is to communicate in full sense and not the language you speak in.</p><p>PS: Yes, that girl is me.</p></template>
+    <template id="pt-child" data-title="Can you recognise the child in me?" data-n="04" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;rect x=&quot;14&quot; y=&quot;48&quot; width=&quot;30&quot; height=&quot;30&quot; rx=&quot;3&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;rect x=&quot;48&quot; y=&quot;48&quot; width=&quot;30&quot; height=&quot;30&quot; rx=&quot;3&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;rect x=&quot;31&quot; y=&quot;16&quot; width=&quot;30&quot; height=&quot;30&quot; rx=&quot;3&quot; fill=&quot;#FBEBE6&quot;/&gt;&lt;path d=&quot;M82 70l10-26 10 26z&quot; fill=&quot;#EBF3E7&quot;/&gt;&lt;circle cx=&quot;104&quot; cy=&quot;26&quot; r=&quot;9&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>Yes I get interested by building blocks,<br>The colours, the shapes, the pictures<br>The ice cream, the outings, the theatres,<br>My family, I consider, my joy creators.<br>When you shine as a rainbow,<br>You can see me as the sky.<br>Do you recognise who am I?</p><p>Yes I dream, I have my own wonderland,<br>I love to groom up myself, meet new people,<br>But I stay back to serve as the supreme court,<br>To listen to, to solve all your troubles,<br>I&#x27;m an excellent juggler, who&#x27;s responsible for not one job but all the five.<br>Do you recognise who am I?</p><p>I am respected more than any almighty,<br>Many love me, come back to me,<br>No matter what their age,<br>But can anyone see my invisible cage?<br>For you work, for you keep checking your bucket list,<br>Though I am smiling, my tears are mistaken as just mist,<br>I am devoted to your sucess as mine,<br>But sometimes, I find no one, to even whine,<br>That&#x27;s how much of an ignorance I face,<br>Couldn&#x27;t you indentify my coveted dreams, they are surely secured, but in a box with the golden lace!</p></template>
+    <template id="pt-happier" data-title="Be a little happier today" data-n="05" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;circle cx=&quot;60&quot; cy=&quot;46&quot; r=&quot;30&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M46 56c9 10 19 10 28 0&quot;/&gt;&lt;path d=&quot;M48 38h.01M72 38h.01&quot; stroke-width=&quot;4&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>We are so engrossed to make everyone laugh,<br>Though in bits and pieces or however may it be crappy,<br>We forget to realise and think about<br>What makes you happy?</p><p>Many a penny can be made by a clown<br>He jumps, he falls or makes a cute frown,<br>His peace, his calm has the audience taken on lease,<br>But does he know, his happiness has a  meltdown?</p><p>You insult others, you become victims of profanity,<br>For what? For whom?<br>Are you destroying your sanity,<br>But let me uncomfortably acquaint you with a fact<br>Not by hook or by crook will you find happiness in your vicinity<br>Until you realise it&#x27;s your own responsibility</p><p>I hope you get the reference,<br>Smile a little wider today,<br>Pray a little longer today,<br>Spill an extra drop of tear today,<br>Because what will be forever is just you and yourself,<br>Earlier the understanding, better will be your defence!</p></template>
+    <template id="pt-chosen" data-title="The Chosen One" data-n="06" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M26 66l-6-34 22 16 18-26 18 26 22-16-6 34z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M26 74h68&quot;/&gt;&lt;circle cx=&quot;20&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;60&quot; cy=&quot;22&quot; r=&quot;3&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;30&quot; r=&quot;3&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>&quot;Silence for a while and the world labels you aberrant,<br>Your knowledge, your words could be too abrasive for everyone to understand,<br>But what makes you, You,<br>Is whatever you like to do.</p><p>Try not too hard to be abreast of everyone,<br>Keep doing what you do, be true to yourself,<br>The world will continue to spread abhorrence,<br>Few may abase you for nothing,<br>They may abate your strength, coz you are</p><p>“THE CHOSEN ONE&quot;</p></template>
+    <template id="pt-heartbrain" data-title="The heart or the brain" data-n="07" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M32 66c-14-10-18-24-8-32 6-5 14-2 18 4 4-6 12-9 18-4 10 8 6 22-8 32l-10 8z&quot; fill=&quot;#FBEBE6&quot;/&gt;&lt;path d=&quot;M78 30c8-8 22-4 22 8 4 4 2 12-4 14 0 8-8 12-14 8-6 0-10-6-8-12-6-4-4-14 4-18z&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;path d=&quot;M60 54h14&quot; stroke-dasharray=&quot;2 4&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>Knowing what you do,<br>Or doing what you know?<br>Who makes the ultimatum?<br>The heart or the brain?<br>The answer helps your problems refrain.<br>How do we make choices and where is the meter of sane?</p><p>Do what your heart says,<br>Caution! It may hurt you too for 273 days,<br>Do what you love or<br>Love what you do, is all that mind knows,<br>Hundreds of battle has it also lost,<br>But forbears to express its deepest lows.</p><p>Be a wise man,<br>Experience all you can,<br>Either life is too long to get a tan<br>Or too short since the year 2019,<br>To escape a travel ban🤭</p></template>
+    <template id="pt-tough" data-title="Tough for Imitation" data-n="08" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M22 28c14-6 62-6 76 0 2 20-4 38-38 46-34-8-40-26-38-46z&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;path d=&quot;M38 44c4-3 10-3 14 0M68 44c4-3 10-3 14 0&quot;/&gt;&lt;path d=&quot;M46 60c8 6 20 6 28 0&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>I finished watching a thriller series a few days back,<br>I was glad that I watched it,<br>Though it was not on my priority stack.</p><p>Many many days later when I think of the experience,<br>I&#x27;m trying to understand the importance of perseverance.<br>Trust me when I say, I speak what I feel,<br>And many may feel, What&#x27;s a great deal!</p><p>Give a thought,<br>When you have to meltdown according to the situation,<br>Even positivity has room for Abation,<br>Problems will not arrive only on invitation,<br>But we all hold a true personality,<br>which undeniably is tough for imitation!</p></template>
+    <template id="pt-truelove" data-title="One true love" data-n="09" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M60 44c-8-18-30-22-34-8-2 10 8 16 20 14-10 4-14 14-8 20 6 6 18 0 22-12z&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;path d=&quot;M60 44c8-18 30-22 34-8 2 10-8 16-20 14 10 4 14 14 8 20-6 6-18 0-22-12z&quot; fill=&quot;#FBEBE6&quot;/&gt;&lt;path d=&quot;M60 38v34M56 30l-6-8M64 30l6-8&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>The tickling sensation of the butterflies in me, have been for so long,<br>The first sight of you, walking through the hallway, ufff... My intentions weren&#x27;t wrong</p><p>I didn&#x27;t hint him, except for my sparkling eyes, just half as bright as diamond,<br>Weren&#x27;t my trembling legs visible to him,<br>He should have guessed, I am dancing.</p><p>Speaking to him left my throat dry,<br>But the minute he swept my shoulder,<br>I got lost in an illusion, in his kaleidoscopic eye,<br>I fell for his beauty, and he fell for my joy<br>Yes, I found my one true love, just as just, as everyone else,<br>Oh, I forgot to mention, even I am a boy!</p></template>
+    <template id="pt-understanding" data-title="Understanding Us" data-n="10" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M22 66c4-30 28-44 58-40-14 6-22 16-24 30 16-6 28-6 38 2-24 6-44 14-72 8z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M84 34l8-6M88 44l10-2&quot; stroke-dasharray=&quot;2 4&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>Neither a metre apart, nor a mile,<br>I accept your problems, your fights and your smile,<br>The first poem I wrote or the song I sang,<br>I want to traceback to you always like a boomerang.</p><p>Everyone understands me, I mark them by percent,<br>They know my laugh, they know my cry,<br>But only can you understand my intention, my frustration in many moments spent,<br>You be my dazzle, all I need is you consistent.</p><p>There will be your story, and there will be mine,<br>At times, to discuss, to recognise, we&#x27;ll not even have time,<br>I know we are stuck, amid a turmoil<br>But i promise to make up, whatever we may spoil.</p></template>
+    <template id="pt-whatarewe" data-title="What are we?" data-n="11" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M18 22h54a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H44l-14 12V56h-12a6 6 0 0 1-6-6V28a6 6 0 0 1 6-6z&quot; fill=&quot;#EFEBFA&quot;/&gt;&lt;path d=&quot;M56 48h40a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6h-4v10l-12-10H62a6 6 0 0 1-6-6V54a6 6 0 0 1 0-6z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M28 36h30M28 44h18&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>We did not have the best of starts,<br>Neither did I, nor did you,<br>Ever expect us to play important parts<br>Or still, do we do?</p><p>I yell my heart out, I murmur my silence,<br>I hold not the fear of being judged,<br>But surely you never miss a chance to make fun of them all,<br>If human psychology were animate, you pose a good stall coz you understand them all.</p><p>A day full of thoughts,<br>I truly will not fail your trust,<br>So I repeat, A day full of thoughts,<br>Of course not about you,<br>Of course not with you,<br>And of course not because of you,<br>But It&#x27;s definitely an effort for you,<br>To keep you posted of my life updates,<br>To tell you how happy or sad I am,<br>To make you laugh at my silliest mistakes,<br>Because those few minutes of laughter is what I want to be or maybe...<br>what I am already...</p></template>
+    <template id="pt-friendfoe" data-title="Irrespective we a friend or a foe" data-n="12" data-art="&lt;svg viewBox=&quot;0 0 120 90&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;#4a4238&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M60 26c-10-8-28-8-40-4v48c12-4 30-4 40 4z&quot; fill=&quot;#EBF3E7&quot;/&gt;&lt;path d=&quot;M60 26c10-8 28-8 40-4v48c-12-4-30-4-40 4z&quot; fill=&quot;#FBF1DA&quot;/&gt;&lt;path d=&quot;M60 26v48M28 36h24M28 46h20M68 36h24M68 46h20&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;"><p>A man of moods,<br>Rather a king of moods I&#x27;d say,<br>Your overwhelming highs and cutest lows<br>I see the same person, just as we met the first day.</p><p>Google says library is:<br>&quot;a place of literary, musical, artistic reference materials&quot;<br>But I&#x27;ve met a person who imbibes this since just a few years,<br>He can act, he can write, is he and Mr. 360 synonymous?<br>But what I do like is his humble kind to leave these anonymous.</p><p>He quotes, Flirting is good for health, just like yoga as they say,<br>But excuse me, who is even flirting with you I say🤷<br>I might not know him completely,<br>Neither do I want to ever may be,<br>You are just good as you are already,<br>Not yesterday not today neither tomorrow will change this I know,<br>Because I hold greater faith in you,<br>Irrespective we are still a friend or a foe!</p></template>
+</div>
 
-<script src="script.js?v=14"></script>
+
+
+<script src="script.js?v=45"></script>
 </body>
 </html>
