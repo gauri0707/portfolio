@@ -12,16 +12,32 @@
     });
   });
 
-  var revealEls = document.querySelectorAll('.reveal');
+  // Scroll reveal: everything with .reveal stays hidden until it scrolls into view, then rises in.
+  // Items in a grid get a small stagger so rows arrive one card after another.
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  revealEls.forEach(function (el) {
+    var grid = el.closest('.deck-grid, .pc-wall, .edu-grid');
+    if (grid && grid !== el) {
+      var i = Array.prototype.indexOf.call(grid.children, el);
+      el.style.setProperty('--d', ((i % 3) * 0.09).toFixed(2) + 's');
+    }
+  });
+  function revealNow(el) { el.classList.add('visible'); }
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        revealNow(entry.target);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
   revealEls.forEach(function (el) { observer.observe(el); });
+  // at the very bottom of the page nothing more can scroll into view, so show whatever is left
+  window.addEventListener('scroll', function () {
+    if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4) {
+      revealEls.forEach(function (el) { if (!el.classList.contains('visible') && el.getBoundingClientRect().top < window.innerHeight) revealNow(el); });
+    }
+  }, { passive: true });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -47,6 +63,17 @@
       proofTriggers.forEach(function (t) { t.classList.remove('active'); });
       activeProof = null;
     }
+
+    var CURSOR_HTML =
+        '<svg class="fc-arrow" viewBox="0 0 64 64" width="46" height="46">' +
+        '<path d="M9 5.5 L53 33.5 L35.5 38.2 L45.5 58 L36 62.2 L26 42.5 L12.5 55 Z" fill="none" stroke="#2b2622" stroke-width="1.2" stroke-linejoin="round" transform="translate(2.2 2.4)" opacity=".35"/>' +
+        '<path d="M8 5 L52 33 L34.5 37.6 L44.5 57.5 L35 61.5 L25 42 L11.5 54.5 Z" fill="#3b3631" stroke="#1f1b18" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>' +
+        '<path d="M17.5 17 L30 24.8" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>' +
+        '<circle cx="37" cy="29.2" r="2.1" fill="#fff"/><circle cx="43" cy="33.2" r="1.7" fill="#fff"/>' +
+        '<path d="M16.5 31 L16.5 40" stroke="#fff" stroke-width="3.2" stroke-linecap="round" transform="rotate(-20 16.5 35)"/>' +
+        '<path d="M33 46 L37 54 M36.5 44.5 L40.8 52.5 M29.5 47.5 L33 55" stroke="#8a8076" stroke-width="1.3" stroke-linecap="round"/>' +
+        '</svg>' +
+        '<span class="fake-cursor-tag">Gauri</span><i class="fake-cursor-ring"></i>';
 
     // Guided demo: a dummy cursor visits each highlighted phrase once, clicks it, and shows the slide.
     // Real hover, click or touch takes over at any time.
@@ -76,16 +103,7 @@
       cursor = document.createElement('div');
       cursor.className = 'fake-cursor';
       cursor.setAttribute('aria-hidden', 'true');
-      cursor.innerHTML =
-        '<svg class="fc-arrow" viewBox="0 0 64 64" width="46" height="46">' +
-        '<path d="M9 5.5 L53 33.5 L35.5 38.2 L45.5 58 L36 62.2 L26 42.5 L12.5 55 Z" fill="none" stroke="#2b2622" stroke-width="1.2" stroke-linejoin="round" transform="translate(2.2 2.4)" opacity=".35"/>' +
-        '<path d="M8 5 L52 33 L34.5 37.6 L44.5 57.5 L35 61.5 L25 42 L11.5 54.5 Z" fill="#3b3631" stroke="#1f1b18" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>' +
-        '<path d="M17.5 17 L30 24.8" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>' +
-        '<circle cx="37" cy="29.2" r="2.1" fill="#fff"/><circle cx="43" cy="33.2" r="1.7" fill="#fff"/>' +
-        '<path d="M16.5 31 L16.5 40" stroke="#fff" stroke-width="3.2" stroke-linecap="round" transform="rotate(-20 16.5 35)"/>' +
-        '<path d="M33 46 L37 54 M36.5 44.5 L40.8 52.5 M29.5 47.5 L33 55" stroke="#8a8076" stroke-width="1.3" stroke-linecap="round"/>' +
-        '</svg>' +
-        '<span class="fake-cursor-tag">Gauri</span><i class="fake-cursor-ring"></i>';
+      cursor.innerHTML = CURSOR_HTML;
       aboutSec.appendChild(cursor);
     }
 
@@ -224,6 +242,18 @@
     drinkworks: { title: 'Drinkworks: Home Cocktails at the Push of a Button', count: 13 },
     seeds21: { title: '21Seeds: Scale the Brand, Protect the Soul', count: 11 }
   };
+  // slide groups inside the About proof panels open in the same viewer
+  var PROOF_DECKS = { cfashion: 'User Research \u00b7 CFashion', sql: 'SQL \u00b7 Instagram and Operation Analytics', nvversions: 'Nivara \u00b7 Prototype versions' };
+  var PROOF_SEL = '.proof-slides[data-deck], .nv-vers[data-deck]';
+  Object.keys(PROOF_DECKS).forEach(function (key) {
+    var links = document.querySelectorAll('[data-deck="' + key + '"] a');
+    DECKS[key] = { title: PROOF_DECKS[key], count: links.length, srcs: [], alts: [] };
+    Array.prototype.forEach.call(links, function (a) {
+      var im = a.querySelector('img');
+      DECKS[key].srcs.push(a.getAttribute('href'));
+      DECKS[key].alts.push(im ? im.getAttribute('alt') : '');
+    });
+  });
   var dv = document.getElementById('deckViewer');
   if (dv) {
     var dvImg = document.getElementById('dvImg');
@@ -235,12 +265,12 @@
     var dvThumbs = document.getElementById('dvThumbs');
     var dvKey = null, dvIndex = 0, dvOpener = null;
 
-    function dvSrc(key, i) { return 'assets/decks/' + key + '/' + (i < 9 ? '0' : '') + (i + 1) + '.jpg'; }
+    function dvSrc(key, i) { if (DECKS[key].srcs) return DECKS[key].srcs[i]; return 'assets/decks/' + key + '/' + (i < 9 ? '0' : '') + (i + 1) + '.jpg'; }
     function dvShow(i) {
       var d = DECKS[dvKey];
       dvIndex = Math.max(0, Math.min(d.count - 1, i));
       dvImg.src = dvSrc(dvKey, dvIndex);
-      dvImg.alt = d.title + ', ' + (d.count > 1 ? 'slide ' + (dvIndex + 1) + ' of ' + d.count : 'page 1');
+      dvImg.alt = (d.alts && d.alts[dvIndex]) || d.title + ', ' + (d.count > 1 ? 'slide ' + (dvIndex + 1) + ' of ' + d.count : 'page 1');
       dvCount.textContent = d.count > 1 ? (dvIndex + 1) + ' / ' + d.count : '';
       dvPrev.disabled = dvIndex === 0;
       dvNext.disabled = dvIndex === d.count - 1;
@@ -251,7 +281,7 @@
       });
       [dvIndex - 1, dvIndex + 1].forEach(function (n) { if (n >= 0 && n < d.count) { new Image().src = dvSrc(dvKey, n); } });
     }
-    function dvOpen(key, opener) {
+    function dvOpen(key, opener, start) {
       dvKey = key; dvOpener = opener;
       var d = DECKS[key];
       dvTitle.textContent = d.title;
@@ -272,7 +302,7 @@
       }
       dv.hidden = false;
       document.documentElement.style.overflow = 'hidden';
-      dvShow(0);
+      dvShow(start || 0);
       dvClose.focus();
     }
     function dvHide() {
@@ -283,6 +313,11 @@
     }
     document.querySelectorAll('.deck-card').forEach(function (card) {
       card.addEventListener('click', function (e) { e.preventDefault(); dvOpen(card.getAttribute('data-deck'), card); });
+    });
+    document.querySelectorAll(PROOF_SEL).forEach(function (grid) {
+      Array.prototype.forEach.call(grid.querySelectorAll('a'), function (a, n) {
+        a.addEventListener('click', function (e) { e.preventDefault(); dvOpen(grid.getAttribute('data-deck'), a, n); });
+      });
     });
     dvPrev.addEventListener('click', function () { dvShow(dvIndex - 1); });
     dvNext.addEventListener('click', function () { dvShow(dvIndex + 1); });
@@ -411,41 +446,126 @@
     }, { passive: true });
   }
 
-  // Contact: intro video loads and autoplays (muted, as browsers require) when it scrolls into view
+  // Contact: intro video loads and autoplays when it scrolls into view. Sound is on by default; browsers only allow
+  // that once the visitor has clicked, tapped or pressed a key on the page (which is true for anyone who got here by
+  // clicking the menu). Otherwise it starts muted and turns the sound on at the visitor's first click or key press.
+  // The player's own controls are hidden so the black side bars can be cropped out; a small button toggles sound.
   var iv = document.getElementById('introVideo');
   if (iv) {
     var ivHolder = iv.querySelector('.iv-holder');
-    var ivLoaded = false;
+    var ivFrame = iv.querySelector('.iv-frame');
+    var ivLoaded = false, ivSoundOn = false, ivInView = false, ivBtn = null, ivInput = false;
     var ivReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function ivSend(func) {
+      var f = ivHolder.querySelector('iframe');
+      if (f && f.contentWindow) f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), '*');
+    }
+    function ivSetSound(on) {
+      ivSoundOn = on;
+      ivSend(on ? 'unMute' : 'mute');
+      if (on) ivSend('playVideo');
+      if (ivBtn) {
+        ivBtn.textContent = on ? 'Turn sound off' : 'Turn sound on';
+        ivBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+    }
     function ivLoad() {
       if (ivLoaded) return;
       ivLoaded = true;
       var id = iv.getAttribute('data-id');
+      var active = !!(navigator.userActivation && navigator.userActivation.hasBeenActive);
+      ivSoundOn = active && !ivReduced;
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=' + (ivReduced ? 0 : 1) + '&mute=1&playsinline=1&loop=1&playlist=' + id + '&rel=0&modestbranding=1';
+      var q = 'autoplay=' + (ivReduced ? 0 : 1) + '&mute=' + (ivSoundOn ? 0 : 1) + '&playsinline=1&loop=1&playlist=' + id + '&rel=0&modestbranding=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
+      if (ivReduced) { ivFrame.classList.add('iv-full'); } else { q += '&controls=0&disablekb=1&fs=0&iv_load_policy=3'; }
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?' + q;
       f.title = 'Hi, I am Gauri. An introduction video';
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.allowFullscreen = true;
       f.referrerPolicy = 'strict-origin-when-cross-origin';
+      f.addEventListener('load', function () { f.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1 }), '*'); });
       ivHolder.appendChild(f);
+      if (ivReduced) return;
+      ivBtn = document.createElement('button');
+      ivBtn.type = 'button'; ivBtn.className = 'iv-sound';
+      ivBtn.addEventListener('click', function (e) { e.stopPropagation(); ivSetSound(!ivSoundOn); });
+      ivFrame.appendChild(ivBtn);
+      ivSetSound(ivSoundOn);
+      if (!ivSoundOn) {
+        var once = function (e) {
+          if (ivBtn && ivBtn.contains(e.target)) return;
+          document.removeEventListener('pointerdown', once, true);
+          document.removeEventListener('keydown', once, true);
+          if (ivInView && !ivSoundOn) ivSetSound(true);
+        };
+        document.addEventListener('pointerdown', once, true);
+        document.addEventListener('keydown', once, true);
+      }
     }
+    // The video never starts on its own at page load (a refresh can leave the page already scrolled down to
+    // it). It starts only after the visitor has scrolled, clicked or pressed a key, and the picture is on screen.
+    function ivWake() {
+      if (!(ivInView && ivInput)) return;
+      if (!ivLoaded) { ivLoad(); return; }
+      if (ivReduced) return;
+      ivSend(ivSoundOn ? 'unMute' : 'mute');
+      ivSend('playVideo');
+    }
+    // leaving the section (or the tab) silences it: paused and muted until the visitor is back on it
+    function ivSilence() { if (ivLoaded) { ivSend('pauseVideo'); ivSend('mute'); } }
+    ['wheel', 'touchstart', 'touchmove', 'pointerdown', 'keydown'].forEach(function (t) {
+      document.addEventListener(t, function () { ivInput = true; ivWake(); }, { capture: true, passive: true });
+    });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) { ivSilence(); } else { ivWake(); } });
     if ('IntersectionObserver' in window) {
-      var ivObs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { ivLoad(); ivObs.disconnect(); }
-      }, { threshold: 0.35 });
-      ivObs.observe(iv);
-    } else { ivLoad(); }
+      new IntersectionObserver(function (entries) {
+        var e = entries[entries.length - 1];
+        ivInView = e.isIntersecting && e.intersectionRatio >= 0.35;
+        if (ivInView) { ivWake(); } else { ivSilence(); }
+      }, { threshold: [0, 0.35] }).observe(iv);
+    } else { ivInView = true; }
   }
 
-  // toolkit tabs
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  tabBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var target = btn.getAttribute('data-tab');
-      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.querySelector('.tab-panel[data-panel="' + target + '"]').classList.add('active');
+  // "GKT" and "Back to top" go to the very top. The #top anchor is the sticky header, which is already at the
+  // top of the screen wherever you are, so the browser's own anchor jump has nowhere to go. The glide is done by
+  // hand so it works the same in every browser, and is skipped for visitors who prefer reduced motion.
+  document.querySelectorAll('a[href="#top"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var from = window.pageYOffset, reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+      if (reduce || from < 2) { window.scrollTo({ top: 0, behavior: 'instant' }); return; }
+      var dur = Math.min(900, 350 + from / 20), t0 = null;
+      (function step(t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / dur), ease = 1 - Math.pow(1 - p, 3);
+        window.scrollTo({ top: from * (1 - ease), behavior: 'instant' });
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    });
+  });
+
+  // toolkit tabs (click, or arrow keys once a tab is focused)
+  var tabBtns = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+  function tkSelect(btn, focus) {
+    var target = btn.getAttribute('data-tab');
+    tabBtns.forEach(function (b) {
+      var on = b === btn;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+    });
+    document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-panel') === target); });
+    if (focus) btn.focus();
+  }
+  tabBtns.forEach(function (btn, i) {
+    btn.tabIndex = btn.classList.contains('active') ? 0 : -1;
+    btn.addEventListener('click', function () { tkSelect(btn, false); });
+    btn.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (e.key === 'Home') { e.preventDefault(); tkSelect(tabBtns[0], true); }
+      else if (e.key === 'End') { e.preventDefault(); tkSelect(tabBtns[tabBtns.length - 1], true); }
+      else if (d) { e.preventDefault(); tkSelect(tabBtns[(i + d + tabBtns.length) % tabBtns.length], true); }
     });
   });
 
@@ -483,6 +603,90 @@
     xp.addEventListener('mouseleave', xpReset);
     xp.addEventListener('focusout', function (e) { if (!xp.contains(e.relatedTarget)) xpReset(); });
     xpShow(XP_DEFAULT);
+
+    // the same dummy cursor visits each role once when the section first scrolls into view (no replay)
+    var xpSec = document.getElementById('experience');
+    var xpReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (xpSec && 'IntersectionObserver' in window && !xpReduce) {
+      var xpDemo = { run: 0, playing: false, visible: false, done: false };
+      var xc = document.createElement('div');
+      xc.className = 'fake-cursor';
+      xc.setAttribute('aria-hidden', 'true');
+      xc.innerHTML = CURSOR_HTML;
+      xpSec.appendChild(xc);
+
+      var xpPoint = function (el, fx, fy) {
+        var r = el.getBoundingClientRect(), box = xpSec.getBoundingClientRect();
+        return { x: r.left - box.left + r.width * fx, y: r.top - box.top + r.height * fy };
+      };
+      var xpPlace = function (p, ms) {
+        xc.style.transitionDuration = ms + 'ms';
+        xc.style.transform = 'translate(' + Math.round(p.x) + 'px,' + Math.round(p.y) + 'px)';
+      };
+      var xpWait = function (ms, id) {
+        return new Promise(function (resolve) { setTimeout(function () { resolve(id === xpDemo.run); }, ms); });
+      };
+      var xpStop = function () {
+        if (!xpDemo.playing) return;
+        xpDemo.run++;
+        xpDemo.playing = false;
+        xc.classList.remove('on');
+      };
+      var xpVisit = function (id, key) {
+        return xpWait(0, id).then(function (ok) {
+          if (!ok) return false;
+          if (!xpDemo.visible) return xpWait(300, id).then(function (ok2) { return ok2 ? xpVisit(id, key) : false; });
+          var tab = xp.querySelector('.xp-tab[data-k="' + key + '"]');
+          var tile = tab && (tab.querySelector('.xp-tile') || tab);
+          if (!tile) return true;
+          xpPlace(xpPoint(tile, 0.55, 0.5), 900);
+          return xpWait(1000, id).then(function (ok2) {
+            if (!ok2) return false;
+            xc.classList.remove('click'); void xc.offsetWidth; xc.classList.add('click');
+            clearTimeout(xpTimer);
+            xpShow(key);
+            return xpWait(2300, id);
+          });
+        });
+      };
+      var xpPlay = function () {
+        var id = ++xpDemo.run;
+        xpDemo.playing = true;
+        xpDemo.done = true;
+        var row = xp.querySelector('.xp-dock') || xp;
+        var start = xpPoint(row, 0.97, -0.4);
+        xpPlace(start, 0);
+        xc.classList.add('on');
+        var chain = xpWait(500, id);
+        ['arm', 'sut', 'jio', 'pa'].forEach(function (k) {
+          chain = chain.then(function (ok) { return ok ? xpVisit(id, k) : false; });
+        });
+        chain.then(function (ok) {
+          if (!ok) return;
+          xpPlace(start, 900);
+          return xpWait(700, id).then(function (ok2) {
+            if (!ok2) return;
+            xc.classList.remove('on');
+            xpDemo.playing = false;
+            xpWait(500, id).then(function (ok3) { if (ok3) xpShow(XP_DEFAULT); });
+          });
+        });
+      };
+
+      ['mouseenter', 'pointerdown', 'touchstart', 'focusin'].forEach(function (ev) {
+        xp.addEventListener(ev, function () { xpDemo.done = true; xpStop(); });
+      });
+      window.addEventListener('resize', xpStop);
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          xpDemo.visible = en.intersectionRatio >= 0.2;
+          if (en.intersectionRatio >= 0.35 && !xpDemo.done) {
+            xpDemo.done = true;
+            setTimeout(function () { if (!xpDemo.playing) xpPlay(); }, 700);
+          }
+        });
+      }, { threshold: [0, 0.2, 0.35] }).observe(xp);
+    }
   }
 
   // interactive dot-mesh background
@@ -504,6 +708,7 @@
   var SPACING = 42;
   var RADIUS = 130;   // how far the cursor's influence reaches, in px
   var MAX_PUSH = 24;  // max displacement for a dot right under the cursor, in px
+  var GLOW = 170;     // radius of the visible dot cloud around the cursor, in px
   var dots = [];
 
   function buildGrid() {
@@ -541,7 +746,7 @@
     { id: 'hero', p: 'ai' },
     { id: 'about', p: 'comm' },
     { id: 'experience', p: 'ai' },
-    { id: 'work', p: 'data' },
+    { id: 'cases', p: 'data' },
     { id: 'toolkit', p: 'ai' },
     { id: 'education', p: 'comm' },
     { id: 'contact', p: 'data' }
@@ -558,6 +763,17 @@
     var el = document.getElementById(s.id);
     if (el) sectionObserver.observe(el);
   });
+
+  // true when the point sits over text, so the dot cloud never gets in the way of reading
+  var TEXT_TAGS = /^(P|H1|H2|H3|H4|LI|A|BUTTON|FIGCAPTION|LABEL|SMALL|B|STRONG|EM|I|SPAN|TD|TH|SUMMARY|BLOCKQUOTE)$/;
+  function overText(x, y) {
+    var e = document.elementFromPoint(x, y);
+    for (var hops = 0; e && e !== document.body && hops < 4; hops++, e = e.parentElement) {
+      if (TEXT_TAGS.test(e.tagName)) return true;
+      for (var n = e.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) return true;
+    }
+    return false;
+  }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
@@ -578,9 +794,11 @@
       d.y += (targetY - d.y) * 0.15;
 
       var energy = pushMag / MAX_PUSH;
-      var size = 1.3 + energy * 1.9;
-      var baseAlpha = d.colorKey === activePillar ? 0.22 : 0.13;
-      var alpha = baseAlpha + energy * 0.4;
+      // dots only exist near the cursor: fully hidden outside GLOW, fading in as the pointer gets close
+      var glow = Math.max(0, 1 - Math.hypot(d.hx - mouseX, d.hy - mouseY) / GLOW);
+      if (glow <= 0.01 || overText(d.hx, d.hy)) continue;
+      var size = 1.5 + glow * 0.9 + energy * 1.7;
+      var alpha = Math.min(0.9, glow * (d.colorKey === activePillar ? 0.5 : 0.38) + energy * 0.15);
 
       var color = PILLAR_COLORS[d.colorKey];
       ctx.beginPath();
